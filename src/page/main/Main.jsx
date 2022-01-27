@@ -40,7 +40,7 @@ export default class Main extends Component {
                 <div className="col-sm-6 col-md-4 portfolio-item"><a className="portfolio-link" href="1.%20Professor&nbsp;%20Home%20Page.html" data-bs-toggle="page">
                         <div className="portfolio-hover">
                             <div className="portfolio-hover-content"><i className="fa fa-plus fa-3x"></i></div>
-                        </div><img className="img-fluid" src="assets/img/portfolio/1-thumbnail.jpg"/>
+                        </div><img alt="" className="img-fluid" src="assets/img/portfolio/1-thumbnail.jpg"/>
                     </a><a href="1.%20Professor&nbsp;%20Home%20Page.html">
                         <div className="portfolio-caption">
                             <h4>Professor</h4>
@@ -50,7 +50,7 @@ export default class Main extends Component {
                 <div className="col-sm-6 col-md-4 portfolio-item"><a className="portfolio-link" href="Student%20Home%20Page.html" data-bs-toggle="modal">
                         <div className="portfolio-hover">
                             <div className="portfolio-hover-content"><i className="fa fa-plus fa-3x"></i></div>
-                        </div><img className="img-fluid" src="assets/img/portfolio/2-thumbnail.jpg"/>
+                        </div><img alt="" className="img-fluid" src="assets/img/portfolio/2-thumbnail.jpg"/>
                     </a><a href="Student%20Home%20Page.html">
                         <div className="portfolio-caption">
                             <h4>Student</h4>
@@ -60,7 +60,7 @@ export default class Main extends Component {
                 <div className="col-sm-6 col-md-4 portfolio-item"><a className="portfolio-link" href="#portfolioModal6" data-bs-toggle="modal">
                         <div className="portfolio-hover">
                             <div className="portfolio-hover-content"><i className="fa fa-plus fa-3x"></i></div>
-                        </div><img className="img-fluid" src="assets/img/portfolio/6-thumbnail.jpg"/>
+                        </div><img alt="" className="img-fluid" src="assets/img/portfolio/6-thumbnail.jpg"/>
                     </a><a href="Expert%20Home%20Page.html">
                         <div className="portfolio-caption">
                             <h4>Industry Expert</h4>
@@ -106,7 +106,7 @@ export default class Main extends Component {
                 <div className="col-lg-12">
                     <ul className="list-group timeline">
                         <li className="list-group-item">
-                            <div className="timeline-image"><img className="rounded-circle img-fluid" src="assets/img/about/1.jpg"/></div>
+                            <div className="timeline-image"><img alt="" className="rounded-circle img-fluid" src="assets/img/about/1.jpg"/></div>
                             <div className="timeline-panel">
                                 <div className="timeline-heading">
                                     <h4>2009-2011</h4>
@@ -118,7 +118,7 @@ export default class Main extends Component {
                             </div>
                         </li>
                         <li className="list-group-item timeline-inverted">
-                            <div className="timeline-image"><img className="rounded-circle img-fluid" src="assets/img/about/2.jpg"/></div>
+                            <div className="timeline-image"><img alt="" className="rounded-circle img-fluid" src="assets/img/about/2.jpg"/></div>
                             <div className="timeline-panel">
                                 <div className="timeline-heading">
                                     <h4>March 2011</h4>
@@ -130,7 +130,7 @@ export default class Main extends Component {
                             </div>
                         </li>
                         <li className="list-group-item">
-                            <div className="timeline-image"><img className="rounded-circle img-fluid" src="assets/img/about/3.jpg"/></div>
+                            <div className="timeline-image"><img alt="" className="rounded-circle img-fluid" src="assets/img/about/3.jpg"/></div>
                             <div className="timeline-panel">
                                 <div className="timeline-heading">
                                     <h4>December 2012</h4>
@@ -142,7 +142,7 @@ export default class Main extends Component {
                             </div>
                         </li>
                         <li className="list-group-item timeline-inverted">
-                            <div className="timeline-image"><img className="rounded-circle img-fluid" src="assets/img/about/4.jpg"/></div>
+                            <div className="timeline-image"><img alt="" className="rounded-circle img-fluid" src="assets/img/about/4.jpg"/></div>
                             <div className="timeline-panel">
                                 <div className="timeline-heading">
                                     <h4>July 2014</h4>
@@ -167,7 +167,7 @@ export default class Main extends Component {
         <div className="container">
             <div className="row">
                 <div className="col-sm-4">
-                    <div className="team-member"><img className="rounded-circle mx-auto" src="assets/img/team/1.jpg"/>
+                    <div className="team-member"><img alt="" className="rounded-circle mx-auto" src="assets/img/team/1.jpg"/>
                         <h4>Kay Garland</h4>
                         <p className="text-muted">Lead Designer</p>
                         <ul className="list-inline social-buttons">
@@ -178,7 +178,7 @@ export default class Main extends Component {
                     </div>
                 </div>
                 <div className="col-sm-4">
-                    <div className="team-member"><img className="rounded-circle mx-auto" src="assets/img/team/2.jpg"/>
+                    <div className="team-member"><img alt="" className="rounded-circle mx-auto" src="assets/img/team/2.jpg"/>
                         <h4>Larry Parker</h4>
                         <p className="text-muted">Lead Marketer</p>
                         <ul className="list-inline social-buttons">
@@ -189,7 +189,7 @@ export default class Main extends Component {
                     </div>
                 </div>
                 <div className="col-sm-4">
-                    <div className="team-member"><img className="rounded-circle mx-auto" src="assets/img/team/3.jpg"/>
+                    <div className="team-member"><img alt="" className="rounded-circle mx-auto" src="assets/img/team/3.jpg"/>
                         <h4>Diana Pertersen</h4>
                         <p className="text-muted">Lead Developer</p>
                         <ul className="list-inline social-buttons">
@@ -205,10 +205,10 @@ export default class Main extends Component {
     <section className="py-5">
         <div className="container">
             <div className="row">
-                <div className="col-sm-6 col-md-3"><a href="#"><img className="img-fluid d-block mx-auto" src="assets/img/clients/creative-market.jpg"/></a></div>
-                <div className="col-sm-6 col-md-3"><a href="#"><img className="img-fluid d-block mx-auto" src="assets/img/clients/designmodo.jpg"/></a></div>
-                <div className="col-sm-6 col-md-3"><a href="#"><img className="img-fluid d-block mx-auto" src="assets/img/clients/envato.jpg"/></a></div>
-                <div className="col-sm-6 col-md-3"><a href="#"><img className="img-fluid d-block mx-auto" src="assets/img/clients/themeforest.jpg"/></a></div>
+                <div className="col-sm-6 col-md-3"><a href="#"><img alt="" className="img-fluid d-block mx-auto" src="assets/img/clients/creative-market.jpg"/></a></div>
+                <div className="col-sm-6 col-md-3"><a href="#"><img alt="" className="img-fluid d-block mx-auto" src="assets/img/clients/designmodo.jpg"/></a></div>
+                <div className="col-sm-6 col-md-3"><a href="#"><img alt="" className="img-fluid d-block mx-auto" src="assets/img/clients/envato.jpg"/></a></div>
+                <div className="col-sm-6 col-md-3"><a href="#"><img alt="" className="img-fluid d-block mx-auto" src="assets/img/clients/themeforest.jpg"/></a></div>
             </div>
         </div>
     </section>
@@ -270,7 +270,7 @@ export default class Main extends Component {
                         <div className="col-lg-8 mx-auto">
                             <div className="modal-body">
                                 <h2 className="text-uppercase">Project Name</h2>
-                                <p className="text-muted item-intro">Lorem ipsum dolor sit amet consectetur.</p><img className="img-fluid d-block mx-auto" src="assets/img/portfolio/1-full.jpg"/>
+                                <p className="text-muted item-intro">Lorem ipsum dolor sit amet consectetur.</p><img alt="" className="img-fluid d-block mx-auto" src="assets/img/portfolio/1-full.jpg"/>
                                 <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
                                 <ul className="list-unstyled">
                                     <li>Date: January 2017</li>
@@ -292,7 +292,7 @@ export default class Main extends Component {
                         <div className="col-lg-8 mx-auto">
                             <div className="modal-body">
                                 <h2 className="text-uppercase">Project Name</h2>
-                                <p className="text-muted item-intro">Lorem ipsum dolor sit amet consectetur.</p><img className="img-fluid d-block mx-auto" src="assets/img/portfolio/2-full.jpg"/>
+                                <p className="text-muted item-intro">Lorem ipsum dolor sit amet consectetur.</p><img alt="" className="img-fluid d-block mx-auto" src="assets/img/portfolio/2-full.jpg"/>
                                 <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
                                 <ul className="list-unstyled">
                                     <li>Date: January 2017</li>
@@ -314,7 +314,7 @@ export default class Main extends Component {
                         <div className="col-lg-8 mx-auto">
                             <div className="modal-body">
                                 <h2 className="text-uppercase">Project Name</h2>
-                                <p className="text-muted item-intro">Lorem ipsum dolor sit amet consectetur.</p><img className="img-fluid d-block mx-auto" src="assets/img/portfolio/3-full.jpg"/>
+                                <p className="text-muted item-intro">Lorem ipsum dolor sit amet consectetur.</p><img alt="" className="img-fluid d-block mx-auto" src="assets/img/portfolio/3-full.jpg"/>
                                 <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
                                 <ul className="list-unstyled">
                                     <li>Date: January 2017</li>
@@ -336,7 +336,7 @@ export default class Main extends Component {
                         <div className="col-lg-8 mx-auto">
                             <div className="modal-body">
                                 <h2 className="text-uppercase">Project Name</h2>
-                                <p className="text-muted item-intro">Lorem ipsum dolor sit amet consectetur.</p><img className="img-fluid d-block mx-auto" src="assets/img/portfolio/4-full.jpg"/>
+                                <p className="text-muted item-intro">Lorem ipsum dolor sit amet consectetur.</p><img alt="" className="img-fluid d-block mx-auto" src="assets/img/portfolio/4-full.jpg"/>
                                 <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
                                 <ul className="list-unstyled">
                                     <li>Date: January 2017</li>
@@ -358,7 +358,7 @@ export default class Main extends Component {
                         <div className="col-lg-8 mx-auto">
                             <div className="modal-body">
                                 <h2 className="text-uppercase">Project Name</h2>
-                                <p className="text-muted item-intro">Lorem ipsum dolor sit amet consectetur.</p><img className="img-fluid d-block mx-auto" src="assets/img/portfolio/5-full.jpg"/>
+                                <p className="text-muted item-intro">Lorem ipsum dolor sit amet consectetur.</p><img alt="" className="img-fluid d-block mx-auto" src="assets/img/portfolio/5-full.jpg"/>
                                 <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
                                 <ul className="list-unstyled">
                                     <li>Date: January 2017</li>
@@ -380,7 +380,7 @@ export default class Main extends Component {
                         <div className="col-lg-8 mx-auto">
                             <div className="modal-body">
                                 <h2 className="text-uppercase">Project Name</h2>
-                                <p className="text-muted item-intro">Lorem ipsum dolor sit amet consectetur.</p><img className="img-fluid d-block mx-auto" src="assets/img/portfolio/6-full.jpg"/>
+                                <p className="text-muted item-intro">Lorem ipsum dolor sit amet consectetur.</p><img alt="" className="img-fluid d-block mx-auto" src="assets/img/portfolio/6-full.jpg"/>
                                 <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
                                 <ul className="list-unstyled">
                                     <li>Date: January 2017</li>
