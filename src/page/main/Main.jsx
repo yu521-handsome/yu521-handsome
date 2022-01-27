@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 
 //This page is the main page of the whole web page
@@ -8,14 +9,14 @@ export default class Main extends Component {
     <div>
       <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="54">
     <nav className="navbar navbar-dark navbar-expand-lg fixed-top" id="mainNav" style={{backgroundColor:"#9f2536"}}>
-        <div className="container"><a className="navbar-brand" href="#page-top">TCPCM</a><button data-bs-toggle="collapse" data-bs-target="#navbarResponsive" className="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i className="fa fa-bars"></i></button>
+        <div className="container"><Link className="navbar-brand" to="">TCPCM</Link><button data-bs-toggle="collapse" data-bs-target="#navbarResponsive" className="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i className="fa fa-bars"></i></button>
             <div className="collapse navbar-collapse" id="navbarResponsive">
                 <ul className="navbar-nav ms-auto text-uppercase">
-                    <li className="nav-item"><a className="nav-link">Student</a></li>
-                    <li className="nav-item"><a className="nav-link">Professor</a></li>
-                    <li className="nav-item"><a className="nav-link">INdustry Expert</a></li>
-                    <li className="nav-item"><a className="nav-link">General Inquiry</a></li>
-                    <li className="nav-item"><a className="nav-link" href="#contact">Contact</a></li>
+                    <li className="nav-item"><Link className="nav-link" to = "#">Student</Link></li>
+                    <li className="nav-item"><Link className="nav-link" to = "#">Professor</Link></li>
+                    <li className="nav-item"><Link className="nav-link" to = "#">INdustry Expert</Link></li>
+                    <li className="nav-item"><Link className="nav-link" to = "#">General Inquiry</Link></li>
+                    <li className="nav-item"><Link className="nav-link" to = "#">Contact</Link></li>
                 </ul>
             </div>
         </div>
@@ -24,7 +25,7 @@ export default class Main extends Component {
         <div className="container">
             <div className="intro-text">
                 <div className="intro-lead-in"><span>Welcome To PolyU TCPCM!</span></div>
-                <div className="intro-heading text-uppercase"><span>It's Nice To Meet You</span></div><a className="btn btn-primary btn-xl text-uppercase" role="button" href="#services">Tell me more</a>
+                <div className="intro-heading text-uppercase"><span>It's Nice To Meet You</span></div><Link className="btn btn-primary btn-xl text-uppercase" role="button" to="">Tell me more</Link>
             </div>
         </div>
     </header>
@@ -37,36 +38,36 @@ export default class Main extends Component {
                 </div>
             </div>
             <div className="row">
-                <div className="col-sm-6 col-md-4 portfolio-item"><a className="portfolio-link" href="1.%20Professor&nbsp;%20Home%20Page.html" data-bs-toggle="page">
+                <div className="col-sm-6 col-md-4 portfolio-item"><Link to = "#" className="portfolio-link" href="1.%20Professor&nbsp;%20Home%20Page.html" data-bs-toggle="page">
                         <div className="portfolio-hover">
                             <div className="portfolio-hover-content"><i className="fa fa-plus fa-3x"></i></div>
                         </div><img alt="" className="img-fluid" src="assets/img/portfolio/1-thumbnail.jpg"/>
-                    </a><a href="1.%20Professor&nbsp;%20Home%20Page.html">
+                    </Link><Link to = "#" href="1.%20Professor&nbsp;%20Home%20Page.html">
                         <div className="portfolio-caption">
                             <h4>Professor</h4>
                             <p className="text-muted">Illustration</p>
                         </div>
-                    </a></div>
-                <div className="col-sm-6 col-md-4 portfolio-item"><a className="portfolio-link" href="Student%20Home%20Page.html" data-bs-toggle="modal">
+                    </Link></div>
+                <div className="col-sm-6 col-md-4 portfolio-item"><Link to = "#" className="portfolio-link" href="Student%20Home%20Page.html" data-bs-toggle="modal">
                         <div className="portfolio-hover">
                             <div className="portfolio-hover-content"><i className="fa fa-plus fa-3x"></i></div>
                         </div><img alt="" className="img-fluid" src="assets/img/portfolio/2-thumbnail.jpg"/>
-                    </a><a href="Student%20Home%20Page.html">
+                    </Link><Link to = "#" href="Student%20Home%20Page.html">
                         <div className="portfolio-caption">
                             <h4>Student</h4>
                             <p className="text-muted">Graphic Design</p>
                         </div>
-                    </a></div>
-                <div className="col-sm-6 col-md-4 portfolio-item"><a className="portfolio-link" href="#portfolioModal6" data-bs-toggle="modal">
+                    </Link></div>
+                <div className="col-sm-6 col-md-4 portfolio-item"><Link to = "#" className="portfolio-link" href="#portfolioModal6" data-bs-toggle="modal">
                         <div className="portfolio-hover">
                             <div className="portfolio-hover-content"><i className="fa fa-plus fa-3x"></i></div>
                         </div><img alt="" className="img-fluid" src="assets/img/portfolio/6-thumbnail.jpg"/>
-                    </a><a href="Expert%20Home%20Page.html">
+                    </Link><Link to = "#" href="Expert%20Home%20Page.html">
                         <div className="portfolio-caption">
                             <h4>Industry Expert</h4>
                             <p className="text-muted">Photography</p>
                         </div>
-                    </a></div>
+                    </Link></div>
             </div>
         </div>
     </section>
@@ -171,9 +172,9 @@ export default class Main extends Component {
                         <h4>Kay Garland</h4>
                         <p className="text-muted">Lead Designer</p>
                         <ul className="list-inline social-buttons">
-                            <li className="list-inline-item"><a href="#"><i className="fa fa-twitter"></i></a></li>
-                            <li className="list-inline-item"><a href="#"><i className="fa fa-facebook"></i></a></li>
-                            <li className="list-inline-item"><a href="#"><i className="fa fa-linkedin"></i></a></li>
+                            <li className="list-inline-item"><Link to = "#" href="#"><i className="fa fa-twitter"></i></Link></li>
+                            <li className="list-inline-item"><Link to = "#" href="#"><i className="fa fa-facebook"></i></Link></li>
+                            <li className="list-inline-item"><Link to = "#" href="#"><i className="fa fa-linkedin"></i></Link></li>
                         </ul>
                     </div>
                 </div>
@@ -182,9 +183,9 @@ export default class Main extends Component {
                         <h4>Larry Parker</h4>
                         <p className="text-muted">Lead Marketer</p>
                         <ul className="list-inline social-buttons">
-                            <li className="list-inline-item"><a href="#"><i className="fa fa-twitter"></i></a></li>
-                            <li className="list-inline-item"><a href="#"><i className="fa fa-facebook"></i></a></li>
-                            <li className="list-inline-item"><a href="#"><i className="fa fa-linkedin"></i></a></li>
+                            <li className="list-inline-item"><Link to = "#" href="#"><i className="fa fa-twitter"></i></Link></li>
+                            <li className="list-inline-item"><Link to = "#" href="#"><i className="fa fa-facebook"></i></Link></li>
+                            <li className="list-inline-item"><Link to = "#" href="#"><i className="fa fa-linkedin"></i></Link></li>
                         </ul>
                     </div>
                 </div>
@@ -193,9 +194,9 @@ export default class Main extends Component {
                         <h4>Diana Pertersen</h4>
                         <p className="text-muted">Lead Developer</p>
                         <ul className="list-inline social-buttons">
-                            <li className="list-inline-item"><a href="#"><i className="fa fa-twitter"></i></a></li>
-                            <li className="list-inline-item"><a href="#"><i className="fa fa-facebook"></i></a></li>
-                            <li className="list-inline-item"><a href="#"><i className="fa fa-linkedin"></i></a></li>
+                            <li className="list-inline-item"><Link to = "#" href="#"><i className="fa fa-twitter"></i></Link></li>
+                            <li className="list-inline-item"><Link to = "#" href="#"><i className="fa fa-facebook"></i></Link></li>
+                            <li className="list-inline-item"><Link to = "#" href="#"><i className="fa fa-linkedin"></i></Link></li>
                         </ul>
                     </div>
                 </div>
@@ -205,10 +206,10 @@ export default class Main extends Component {
     <section className="py-5">
         <div className="container">
             <div className="row">
-                <div className="col-sm-6 col-md-3"><a href="#"><img alt="" className="img-fluid d-block mx-auto" src="assets/img/clients/creative-market.jpg"/></a></div>
-                <div className="col-sm-6 col-md-3"><a href="#"><img alt="" className="img-fluid d-block mx-auto" src="assets/img/clients/designmodo.jpg"/></a></div>
-                <div className="col-sm-6 col-md-3"><a href="#"><img alt="" className="img-fluid d-block mx-auto" src="assets/img/clients/envato.jpg"/></a></div>
-                <div className="col-sm-6 col-md-3"><a href="#"><img alt="" className="img-fluid d-block mx-auto" src="assets/img/clients/themeforest.jpg"/></a></div>
+                <div className="col-sm-6 col-md-3"><Link to = "#" href="#"><img alt="" className="img-fluid d-block mx-auto" src="assets/img/clients/creative-market.jpg"/></Link></div>
+                <div className="col-sm-6 col-md-3"><Link to = "#" href="#"><img alt="" className="img-fluid d-block mx-auto" src="assets/img/clients/designmodo.jpg"/></Link></div>
+                <div className="col-sm-6 col-md-3"><Link to = "#" href="#"><img alt="" className="img-fluid d-block mx-auto" src="assets/img/clients/envato.jpg"/></Link></div>
+                <div className="col-sm-6 col-md-3"><Link to = "#" href="#"><img alt="" className="img-fluid d-block mx-auto" src="assets/img/clients/themeforest.jpg"/></Link></div>
             </div>
         </div>
     </section>
@@ -248,15 +249,15 @@ export default class Main extends Component {
                 <div className="col-md-4"><span className="copyright">Copyright&nbsp;© TCPCM 2022</span></div>
                 <div className="col-md-4">
                     <ul className="list-inline social-buttons">
-                        <li className="list-inline-item"><a href="#"><i className="fa fa-twitter"></i></a></li>
-                        <li className="list-inline-item"><a href="#"><i className="fa fa-facebook"></i></a></li>
-                        <li className="list-inline-item"><a href="#"><i className="fa fa-linkedin"></i></a></li>
+                        <li className="list-inline-item"><Link to = "#" href="#"><i className="fa fa-twitter"></i></Link></li>
+                        <li className="list-inline-item"><Link to = "#" href="#"><i className="fa fa-facebook"></i></Link></li>
+                        <li className="list-inline-item"><Link to = "#" href="#"><i className="fa fa-linkedin"></i></Link></li>
                     </ul>
                 </div>
                 <div className="col-md-4">
                     <ul className="list-inline quicklinks">
-                        <li className="list-inline-item"><a href="#">Privacy Policy</a></li>
-                        <li className="list-inline-item"><a href="#">Terms of Use</a></li>
+                        <li className="list-inline-item"><Link to = "#" href="#">Privacy Policy</Link></li>
+                        <li className="list-inline-item"><Link to = "#" href="#">Terms of Use</Link></li>
                     </ul>
                 </div>
             </div>
