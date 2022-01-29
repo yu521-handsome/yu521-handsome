@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Route,Switch,Redirect} from 'react-router-dom';
 import Home from '../Home/Home';
+import TestRouter from '../TestRouter'
 
 export default class ProfessorRoute extends Component {
   render() {
@@ -8,7 +9,8 @@ export default class ProfessorRoute extends Component {
     <div>
         <Switch>
         <Route path="/professor/home" component={Home}/>
-        <Redirect to="/professor/home"/>
+        <Route path="/professor/test" component={TestRouter}/>
+        <Redirect to="/professor/test"/>
         </Switch>
     </div>);
   }
