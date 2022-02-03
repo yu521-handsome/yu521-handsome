@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Route, Routes,Navigate} from 'react-router-dom';
+import {Route,Routes,Navigate} from 'react-router-dom';
 import Home from '../Home/Home';
 
 export default class StudentRoute extends Component {
