@@ -10,11 +10,11 @@ export default class App extends Component {
         return(
             <div>
                 <Routes>
-                    <Route path="/main" element = {<Main/>}/>
-                    <Route path="/professor" element = {<ProfessorRoute/>}/>
-                    <Route path="/student" element = {<StudentRoute/>}/>
-                    <Route path="/industry" element = {<IndustryRoute/>}/>
-                    <Route path="*" element={<Navigate to="/main" />} />
+                    <Route path="main" element = {<Main/>}/>
+                    <Route path="professor/*" element = {<ProfessorRoute/>}/>
+                    <Route path="student" element = {<StudentRoute/>}/>
+                    <Route path="industry" element = {<IndustryRoute/>}/>
+                    <Route path="*" element = {<Navigate to="professor" />} /> 
                 </Routes>
             </div>
         )
