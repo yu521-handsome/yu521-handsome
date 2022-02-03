@@ -10,6 +10,7 @@ export default class ProfessorRoute extends Component {
 
         <Routes>
         <Route path="home" element={<Home/>}/>
+        <Route path="test" element={<TestRouter/>}/>
         <Route path="" element = {<Navigate to="home" />} /> 
         </Routes>
     </div>);

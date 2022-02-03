@@ -14,7 +14,7 @@ export default class App extends Component {
                     <Route path="professor/*" element = {<ProfessorRoute/>}/>
                     <Route path="student" element = {<StudentRoute/>}/>
                     <Route path="industry" element = {<IndustryRoute/>}/>
-                    <Route path="*" element = {<Navigate to="professor" />} /> 
+                    <Route path="*" element = {<Navigate to="main" />} /> 
                 </Routes>
             </div>
         )
