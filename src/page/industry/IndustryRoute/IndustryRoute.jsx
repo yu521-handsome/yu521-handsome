@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Route,Navigate, Routes} from 'react-router-dom';
+import {Route,Routes,Navigate} from 'react-router-dom';
 import Home from '../Home/Home';
 
 export default class IndustryRoute extends Component {
@@ -7,8 +7,8 @@ export default class IndustryRoute extends Component {
     return (
     <div>
         <Routes>
-        <Route path="/industry/home" element={<Home/>}/>
-        <Route path="*" element={<Navigate to="/industry/home"/>} />
+        <Route path="home" element={<Home/>}/>
+        <Route path="" element = {<Navigate to="home" />} /> 
         </Routes>
     </div>
     )
