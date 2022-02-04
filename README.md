@@ -1,6 +1,8 @@
-# Getting Started with Create React App
+# TCPCM-Web
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+Deployment: https://main.d3vy2kfivitvsl.amplifyapp.com/main
 
 ## Available Scripts
 
@@ -72,3 +74,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
