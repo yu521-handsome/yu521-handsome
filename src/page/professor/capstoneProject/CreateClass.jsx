@@ -22,13 +22,16 @@ export default class CreateClass extends Component {
     const {id,code,chiefProfessor} = this.state
     const HEADER = {
       'Accept':'application/json,text/plain,*/*',
-      'Content-Type':'application/x-www-form-urlencoded'
+      'Content-Type':'application/json'
     }
-    const BODY = `courseId:${id}&type=''&componentCode=${code}&chiefProfessor=${chiefProfessor}`
-    fetch('',{
+    const BODY = {
+      courseId:id,
+      componentCode:code,
+      chiefProfessor:chiefProfessor}
+    fetch('/classes',{
       method:'post',
       headers:HEADER,
-      body:BODY
+      body:JSON.stringify(BODY)
     }).then((res)=>{
       return res.json()
     }).then((data)=>{

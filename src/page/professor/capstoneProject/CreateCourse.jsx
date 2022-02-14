@@ -52,13 +52,19 @@ export default class CreateCourse extends Component {
     }
     const HEADER = {
       'Accept':'application/json,text/plain,*/*',
-      'Content-Type':'application/x-www-form-urlencoded'
+      'Content-Type':'application/json'
     }
-    const BODY = `code=${subjectCode}&title=${subjectTitle}&theme=${themeTitle}&chiefProfessor=${chiefProfessor}&deputyProfessors=${submitProfessors}`
-    fetch('',{
+    const BODY = {
+      code:subjectCode,
+      title:subjectTitle,
+      theme:themeTitle,
+      chiefProfessor:chiefProfessor,
+      deputyProfessors:submitProfessors}
+
+    fetch('/courses',{
       method:'post',
       headers:HEADER,
-      body:BODY
+      body:JSON.stringify(BODY)
     }).then((res)=>{
       return res.json()
     }).then((data)=>{
