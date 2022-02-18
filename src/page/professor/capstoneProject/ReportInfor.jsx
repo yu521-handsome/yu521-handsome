@@ -5,7 +5,7 @@ export default class ReportInfor extends Component {
   render() {
     return (
         <div>
-            <div id="item-1-4" className="tab-pane fade" role="tabpanel" aria-labelledby="item-1-4-tab">
+            <div className="tab-pane fade show active" role="tabpanel">
                 <h4>Capstone Project - Report Information</h4>
                 <p>The table below shows all the information of reports you set up. You can setup a new report. You can also change or update the information of existing reports.<br /></p>
                 <Link className="btn btn-primary" role="button" to="/professor/capstoneProject/createReport">Setup Report</Link>

@@ -5,7 +5,7 @@ export default class ClassInfor extends Component {
   render() {
     return (
         <div>
-            <div id="item-1-2" className="tab-pane fade" role="tabpanel" aria-labelledby="item-1-2-tab">
+            <div className="tab-pane fade show active" role="tabpanel">
                 <h4>Capstone Project - Class Information</h4>
                 <p>The table below shows all the information of classes you set up. You can setup a new class for a course. You can also change or update the information of existing classes.<br /></p>
                 <Link className="btn btn-primary" role="button" to="/professor/capstoneProject/createClass">Setup Class</Link>

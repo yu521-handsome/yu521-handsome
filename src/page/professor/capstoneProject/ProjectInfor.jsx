@@ -5,7 +5,7 @@ export default class ProjectInfor extends Component {
   render() {
     return (
         <div>
-            <div id="item-1-3" className="tab-pane fade" role="tabpanel" aria-labelledby="item-1-3-tab">
+            <div className="tab-pane fade show active" role="tabpanel">
                 <h4>Capstone Project - Project Information</h4>
                 <p>The table below shows all the information of projects you set up. You can setup a new project. You can also change or update the information of existing projects.<br /></p>
                 <Link className="btn btn-primary" role="button" to="/professor/capstoneProject/createProject">Setup Project</Link>
