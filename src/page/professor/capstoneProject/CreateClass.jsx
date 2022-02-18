@@ -10,7 +10,7 @@ export default class CreateClass extends Component {
   }
 
   saveId = (event)=> {
-    this.setState({Id:event.target.value})
+    this.setState({id:event.target.value})
   }
 
   saveCode = (event)=> {
@@ -25,7 +25,7 @@ export default class CreateClass extends Component {
       'Content-Type':'application/json'
     }
     const BODY = {
-      courseId:id,
+      courseID:id,
       componentCode:code,
       chiefProfessor:chiefProfessor}
     fetch('/classes',{
