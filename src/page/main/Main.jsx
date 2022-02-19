@@ -38,16 +38,19 @@ export default class Main extends Component {
                 </div>
             </div>
             <div className="row">
-                <div className="col-sm-6 col-md-4 portfolio-item"><Link to = "#" className="portfolio-link" href="1.%20Professor&nbsp;%20Home%20Page.html" data-bs-toggle="page">
-                        <div className="portfolio-hover">
-                            <div className="portfolio-hover-content"><i className="fa fa-plus fa-3x"></i></div>
+                <div className="col-sm-6 col-md-4 portfolio-item">
+                    <Link to = "/professor/home" className="portfolio-link" href="1.%20Professor&nbsp;%20Home%20Page.html">
+                        <div className="portfolio-hover" data-bs-toggle="page">
+                            <div className="portfolio-hover-content">
+                                <i className="fa fa-plus fa-3x"></i>
+                                </div>
                         </div><img alt="" className="img-fluid" src="assets/img/portfolio/1-thumbnail.jpg"/>
-                    </Link><Link to = "#" href="1.%20Professor&nbsp;%20Home%20Page.html">
                         <div className="portfolio-caption">
                             <h4>Professor</h4>
                             <p className="text-muted">Illustration</p>
                         </div>
-                    </Link></div>
+                    </Link>
+                </div>
                 <div className="col-sm-6 col-md-4 portfolio-item"><Link to = "#" className="portfolio-link" href="Student%20Home%20Page.html" data-bs-toggle="modal">
                         <div className="portfolio-hover">
                             <div className="portfolio-hover-content"><i className="fa fa-plus fa-3x"></i></div>
