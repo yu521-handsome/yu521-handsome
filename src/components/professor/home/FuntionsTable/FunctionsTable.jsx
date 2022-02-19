@@ -22,7 +22,7 @@ export default class FunctionsTable extends Component {
                     <h4 className="section-heading">Account Setup</h4>
                     <p className="text-muted">Professors can find their students' and industry mentors' accounts, then group all relevant personnel to a course.</p>
                     </div>
-                    <div className="col-md-4"><a href="P-3.1.Student%20Grouping.html"><span className="fa-stack fa-4x"><i className="fa fa-circle fa-stack-2x text-primary" /><i className="fa fa-group fa-stack-1x fa-inverse" /></span></a>
+                    <div className="col-md-4"><Link to='/professor/group/set'><span className="fa-stack fa-4x"><i className="fa fa-circle fa-stack-2x text-primary" /><i className="fa fa-group fa-stack-1x fa-inverse" /></span></Link>
                     <h4 className="section-heading">Student Grouping</h4>
                     <p className="text-muted">Professors can review student grouping information here.</p>
                     </div>
