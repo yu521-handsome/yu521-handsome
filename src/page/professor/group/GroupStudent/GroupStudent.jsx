@@ -3,6 +3,17 @@ import Notice from '../../../../components/professor/group/groupStudent/Notice/N
 import NavigationBar from '../../../../components/professor/NavigationBar/NavigationBar'
 
 export default class GroupStudent extends Component {
+  state = {classInfor:[]}
+  componentDidMount(){
+    fetch('/classes').then((response)=>{
+      return response.json()
+    }).then((response) => {
+      this.setState({classInfor:response})
+    }).catch((e)=>{
+      console.log("error")
+    })
+  }
+
   render() {
     return (
         <div>
