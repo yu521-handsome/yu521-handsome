@@ -7,7 +7,7 @@ export default class Main extends Component {
   render() {
     return (
     <div>
-      <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="54">
+      <div id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="54">
     <nav className="navbar navbar-dark navbar-expand-lg fixed-top" id="mainNav" style={{backgroundColor:"#9f2536"}}>
         <div className="container"><Link className="navbar-brand" to="">TCPCM</Link><button data-bs-toggle="collapse" data-bs-target="#navbarResponsive" className="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i className="fa fa-bars"></i></button>
             <div className="collapse navbar-collapse" id="navbarResponsive">
@@ -226,7 +226,7 @@ export default class Main extends Component {
             </div>
             <div className="row">
                 <div className="col-lg-12">
-                    <form id="contactForm" name="contactForm" novalidate="novalidate">
+                    <form id="contactForm" name="contactForm" noValidate="novalidate">
                         <div className="row">
                             <div className="col-md-6">
                                 <div className="form-group mb-3"><input className="form-control" type="text" id="name" placeholder="Your Name *" required=""/><small className="form-text text-danger flex-grow-1 help-block lead"></small></div>
@@ -266,7 +266,7 @@ export default class Main extends Component {
             </div>
         </div>
     </footer>
-    <div className="modal fade text-center portfolio-modal" role="dialog" tabindex="-1" id="portfolioModal1">
+    <div className="modal fade text-center portfolio-modal" role="dialog" tabIndex="-1" id="portfolioModal1">
         <div className="modal-dialog modal-lg" role="document">
             <div className="modal-content">
                 <div className="container">
@@ -288,7 +288,7 @@ export default class Main extends Component {
             </div>
         </div>
     </div>
-    <div className="modal fade text-center portfolio-modal" role="dialog" tabindex="-1" id="portfolioModal2">
+    <div className="modal fade text-center portfolio-modal" role="dialog" tabIndex="-1" id="portfolioModal2">
         <div className="modal-dialog modal-lg" role="document">
             <div className="modal-content">
                 <div className="container">
@@ -310,7 +310,7 @@ export default class Main extends Component {
             </div>
         </div>
     </div>
-    <div className="modal fade text-center portfolio-modal" role="dialog" tabindex="-1" id="portfolioModal3">
+    <div className="modal fade text-center portfolio-modal" role="dialog" tabIndex="-1" id="portfolioModal3">
         <div className="modal-dialog modal-lg" role="document">
             <div className="modal-content">
                 <div className="container">
@@ -332,7 +332,7 @@ export default class Main extends Component {
             </div>
         </div>
     </div>
-    <div className="modal fade text-center portfolio-modal" role="dialog" tabindex="-1" id="portfolioModal4">
+    <div className="modal fade text-center portfolio-modal" role="dialog" tabIndex="-1" id="portfolioModal4">
         <div className="modal-dialog modal-lg" role="document">
             <div className="modal-content">
                 <div className="container">
@@ -354,7 +354,7 @@ export default class Main extends Component {
             </div>
         </div>
     </div>
-    <div className="modal fade text-center portfolio-modal" role="dialog" tabindex="-1" id="portfolioModal5">
+    <div className="modal fade text-center portfolio-modal" role="dialog" tabIndex="-1" id="portfolioModal5">
         <div className="modal-dialog modal-lg" role="document">
             <div className="modal-content">
                 <div className="container">
@@ -376,7 +376,7 @@ export default class Main extends Component {
             </div>
         </div>
     </div>
-    <div className="modal fade text-center portfolio-modal" role="dialog" tabindex="-1" id="portfolioModal6">
+    <div className="modal fade text-center portfolio-modal" role="dialog" tabIndex="-1" id="portfolioModal6">
         <div className="modal-dialog modal-lg" role="document">
             <div className="modal-content">
                 <div className="container">
@@ -398,10 +398,7 @@ export default class Main extends Component {
             </div>
         </div>
     </div>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/agency.js"></script>
-    <script src="assets/js/Table-with-search.js"></script>
-</body>
+    </div>
     </div>);
   }
 }
