@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
-export default class 
- extends Component {
+export default class Notic extends Component {
   render() {
     return (
       <div>
@@ -17,7 +16,7 @@ export default class
                     </div>
                     <div className="modal-footer">
                       <button className="btn btn-light" type="button" data-bs-dismiss="modal">Close</button>
-                      <Link className="btn btn-primary" role="button" to="/professor/capstoneProject/infor">COURSE OUTLINE</Link>
+                      <Link to="/professor/capstoneProject/infor"><button className="btn btn-primary" data-bs-dismiss="modal">COURSE OUTLINE</button></Link>
                     </div>
                   </div>
                 </div>
