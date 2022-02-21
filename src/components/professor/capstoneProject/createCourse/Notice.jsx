@@ -15,8 +15,8 @@ export default class Notice extends Component {
                             <p>You can click the button to setup classes for this new course or go back to course outline check the new course information.</p>
                         </div>
                         <div className="modal-footer">
-                            <Link className="btn btn-primary" role="button" to = "/professor/capstoneProject/createClass">Setup Class</Link>
-                            <Link className="btn btn-primary" role="button" to = "/professor/capstoneProject/infor">Course outline</Link>
+                            <Link to = "/professor/capstoneProject/createClass"><button className="btn btn-primary" data-bs-dismiss="modal">Setup Class</button></Link>
+                            <Link to = "/professor/capstoneProject/infor"><button className="btn btn-primary" to = "/professor/capstoneProject/infor" data-bs-dismiss="modal">Course outline</button></Link>
                         </div>
                     </div>
                 </div>
