@@ -1,9 +1,70 @@
 import React, { Component } from 'react'
+import NavigationBar from '../../../components/professor/NavigationBar/NavigationBar'
+import Notice from '../../../components/professor/capstoneProject/createReport/Notice/Notice'
 
 export default class CreateReport extends Component {
+  state = {
+    title:"",
+    courseID:"",
+    description:""
+  }
+
+  saveTitle = (event) => {
+    this.setState({title:event.target.value})
+  }
+
+  saveID = (event) => {
+    this.setState({courseID:event.target.value})
+  }
+
+  saveDescription = (event) => {
+    this.setState({description:event.target.value})
+  }
+
+  handleSubmit = (event)=> {
+    event.preventDefault()
+    const {title,courseID,description} = this.state
+    const HEADER = {
+      'Accept':'application/json,text/plain,*/*',
+      'Content-Type':'application/json'
+    }
+    const BODY = {
+      courseID:courseID,
+      title:title,
+      description:description
+    }
+    fetch('/api1/reports',{
+      method:'post',
+      headers:HEADER,
+      body:JSON.stringify(BODY)
+    }).then((res)=>{
+      return res.json()
+    }).then((data)=>{
+      console.log(data)
+    }).catch(function(error){
+      console.log(error)
+    })
+  }
   render() {
     return (
-      <div>CreateReport</div>
+      <div>
+        <NavigationBar/>
+        <section id="course-report-setup" className="contact-clean" style={{background: 'rgba(249,242,243,0.98)', marginTop: '7%'}}>
+          <form method="post" onSubmit={this.handleSubmit}>
+            <h2 className="text-center">Course Report Setup</h2>
+            <div id="report-name-1" className="mb-3"><small className="form-text">Report Name</small>
+            <input className="form-control" type="text" onChange={this.saveTitle}/></div>
+            <div id="course-id-1" className="mb-3"><small className="form-text">Course ID</small>
+            <input className="form-control" type="text" onChange={this.saveID}/></div>
+            <div id="report-description-1" className="mb-3"><small className="form-text">Report Description</small>
+            <textarea className="form-control form-control-sm" defaultValue={""} onChange={this.saveDescription}/></div>
+            <div className="mb-3">
+              <button className="btn btn-secondary" role="button" href="#modal-2" style={{background: 'var(--bs-primary)'}} data-bs-target="#modal-2" data-bs-toggle="modal" type='submit'>SETUP</button>
+              <Notice/>
+            </div>
+          </form>
+        </section>
+      </div>
     )
   }
 }
