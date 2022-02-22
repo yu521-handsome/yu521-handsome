@@ -59,7 +59,7 @@ export default class CreateReport extends Component {
             <div id="report-description-1" className="mb-3"><small className="form-text">Report Description</small>
             <textarea className="form-control form-control-sm" defaultValue={""} onChange={this.saveDescription}/></div>
             <div className="mb-3">
-              <button className="btn btn-secondary" role="button" href="#modal-2" style={{background: 'var(--bs-primary)'}} data-bs-target="#modal-2" data-bs-toggle="modal" type='submit'>SETUP</button>
+              <button className="btn btn-secondary" href="#modal-2" style={{background: 'var(--bs-primary)'}} data-bs-target="#modal-2" data-bs-toggle="modal" type='submit'>SETUP</button>
               <Notice/>
             </div>
           </form>
