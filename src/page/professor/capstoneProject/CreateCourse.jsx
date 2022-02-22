@@ -46,7 +46,7 @@ export default class CreateCourse extends Component {
     const {subjectTitle,subjectCode,themeTitle,professor,chiefProfessor} = this.state
     var submitProfessors=[]
     for(var i=0; i < professor.length; i++) {
-      if(professor[i] != '') {
+      if(professor[i] !== '') {
         submitProfessors.push(professor[i])
       }
     }
