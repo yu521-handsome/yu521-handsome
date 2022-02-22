@@ -28,7 +28,7 @@ export default class CreateClass extends Component {
       courseID:id,
       componentCode:code,
       chiefProfessor:chiefProfessor}
-    fetch('/classes',{
+    fetch('/api1/classes',{
       method:'post',
       headers:HEADER,
       body:JSON.stringify(BODY)
