@@ -54,7 +54,7 @@ export default class CreateClass extends Component {
             <div id="component-code" className="mb-3"><small className="form-text">Component Code</small>
             <input className="form-control" type="text" onChange={this.saveCode}/></div>
             <div className="mb-3">
-              <button className="btn btn-secondary" role="button" href="#modal-3" style={{background: 'var(--bs-primary)'}} data-bs-target="#modal-3" data-bs-toggle="modal" type='submit'>SETUP</button>
+              <button className="btn btn-secondary" href="#modal-3" style={{background: 'var(--bs-primary)'}} data-bs-target="#modal-3" data-bs-toggle="modal" type='submit'>SETUP</button>
               <Notice/>
             </div>
           </form>
