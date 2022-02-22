@@ -61,7 +61,7 @@ export default class CreateCourse extends Component {
       chiefProfessor:chiefProfessor,
       deputyProfessors:submitProfessors}
 
-    fetch('/courses',{
+    fetch('/api1/courses',{
       method:'post',
       headers:HEADER,
       body:JSON.stringify(BODY)
