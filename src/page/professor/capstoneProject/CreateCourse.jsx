@@ -46,7 +46,7 @@ export default class CreateCourse extends Component {
     const {subjectTitle,subjectCode,themeTitle,professor,chiefProfessor} = this.state
     var submitProfessors=[]
     for(var i=0; i < professor.length; i++) {
-      if(professor[i] != '') {
+      if(professor[i] !== '') {
         submitProfessors.push(professor[i])
       }
     }
@@ -61,7 +61,7 @@ export default class CreateCourse extends Component {
       chiefProfessor:chiefProfessor,
       deputyProfessors:submitProfessors}
 
-    fetch('/courses',{
+    fetch('/api1/courses',{
       method:'post',
       headers:HEADER,
       body:JSON.stringify(BODY)

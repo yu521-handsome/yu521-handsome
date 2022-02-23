@@ -16,7 +16,7 @@ export default class Notice extends Component {
                         </div>
                         <div className="modal-footer">
                             <Link to = "/professor/capstoneProject/createClass"><button className="btn btn-primary" data-bs-dismiss="modal">Setup Class</button></Link>
-                            <Link to = "/professor/capstoneProject/infor"><button className="btn btn-primary" to = "/professor/capstoneProject/infor" data-bs-dismiss="modal">Course outline</button></Link>
+                            <Link to = "/professor/capstoneProject/infor"><button className="btn btn-primary" data-bs-dismiss="modal">Course outline</button></Link>
                         </div>
                     </div>
                 </div>

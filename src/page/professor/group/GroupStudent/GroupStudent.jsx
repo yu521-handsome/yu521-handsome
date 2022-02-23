@@ -29,7 +29,7 @@ export default class GroupStudent extends Component {
     const HEADER = {
       'Accept':'application/json,text/plain,*/*'
     }
-    fetch('/classes',{
+    fetch('/api1/classes',{
       method:"get",
       headers:HEADER
     }).then((response)=>{
