@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 export default class Header extends Component {
   render() {
@@ -12,10 +13,10 @@ export default class Header extends Component {
                     will be shown in the page below. Professors can also
                     <a className="btn btn-light btn-lg" role="button" id="issue-badge" href="#badge-example">Issue Badge</a> 
                     for the outstanding students&nbsp;</p>
-                    <a className="btn btn-primary btn-lg" role="button" href="P-4.2.Grade%20report.html">Report</a>
-                    <a className="btn btn-light btn-lg" role="button" href="P-4.3.Grade%20project.html">Project</a>
-                    <a className="btn btn-primary btn-lg" role="button" href="P-4.4.Grade%20quiz.html">Quiz</a>
-                    <a className="btn btn-light btn-lg" role="button" href="P-4.5.Grade%20overall.html">Course Completion</a>
+                    <Link className="btn btn-primary btn-lg" role="button" to="/professor/grading/report">Report</Link>
+                    <Link className="btn btn-light btn-lg" role="button" to="/professor/grading/project">Project</Link>
+                    <Link className="btn btn-primary btn-lg" role="button" to="/professor/grading/quiz">Quiz</Link>
+                    <Link className="btn btn-light btn-lg" role="button" to="/professor/grading/overall">Course Completion</Link>
                 </div>
             </div>
         </div>
