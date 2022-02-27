@@ -33,10 +33,12 @@ export default class GroupStudent extends Component {
       method:"get",
       headers:HEADER
     }).then((response)=>{
-      this.setState({ok:response.ok})
-      return response.json()
+      if(response.ok) {
+        return response.json()
+      }
+      return "error"
     }).then((response) => {
-      if(this.state.ok){
+      if(response !== "error"){
         this.setState({classInfor:response})
       }
     }).catch((e)=>{
