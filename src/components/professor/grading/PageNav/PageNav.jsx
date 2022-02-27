@@ -44,11 +44,11 @@ export default class PageNav extends Component {
         let totalPage = this.props.totalPage
 
         let pageNav = [];
-        pageNav.push(<li className="page-item" aria-hidden="true" onClick = {this.goPrev.bind(this)} key={0}><button class="page-link">«</button></li>)
+        pageNav.push(<li className="page-item" aria-hidden="true" onClick = {this.goPrev.bind(this)} key={0}><button className="page-link">«</button></li>)
         for(let i = 1;i <= totalPage; i++){
-            pageNav.push(<li className="page-item" key={i} onClick = { this.go.bind(this,i) }><button class="page-link">{i}</button></li>)
+            pageNav.push(<li className="page-item" key={i} onClick = { this.go.bind(this,i) }><button className="page-link">{i}</button></li>)
         }
-        pageNav.push(<li className="page-item" aria-hidden="true" onClick = {this.goNext.bind(this)} key={totalPage+1}><button class="page-link">»</button></li>)
+        pageNav.push(<li className="page-item" aria-hidden="true" onClick = {this.goNext.bind(this)} key={totalPage+1}><button className="page-link">»</button></li>)
 
         return pageNav;
     }
