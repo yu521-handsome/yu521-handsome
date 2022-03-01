@@ -22,26 +22,29 @@ export default class GroupStudent extends Component {
     groupName:"",
     students:['','',''],
     groupID:"",
-    note:""
+    notes:""
 
   }
   componentDidMount(){
-    const HEADER = {
-      'Accept':'application/json,text/plain,*/*'
-    }
-    fetch('/api1/classes',{
-      method:"get",
-      headers:HEADER
-    }).then((response)=>{
-      this.setState({ok:response.ok})
-      return response.json()
-    }).then((response) => {
-      if(this.state.ok){
-        this.setState({classInfor:response})
-      }
-    }).catch((e)=>{
-      console.log("error")
-    })
+    //get the class list
+    // const HEADER = {
+    //   'Accept':'application/json,text/plain,*/*'
+    // }
+    // fetch('/api1/classes',{
+    //   method:"get",
+    //   headers:HEADER
+    // }).then((response)=>{
+    //   if(response.ok) {
+    //     return response.json()
+    //   }
+    //   return "error"
+    // }).then((response) => {
+    //   if(response !== "error"){
+    //     this.setState({classInfor:response})
+    //   }
+    // }).catch((e)=>{
+    //   console.log("error")
+    // })
   }
 
   handleClass = (event) => {
@@ -92,12 +95,16 @@ export default class GroupStudent extends Component {
   }
 
   saveNote = (event) => {
-    this.setState({note:event.target.value})
+    this.setState({notes:event.target.value})
+  }
+
+  saveCourseID = (event) => {
+    this.setState({submitCourseID:event.target.value})
   }
 
   handleSubmit = (event) => {
     event.preventDefault()
-    const {submitExpert,students,chiefProfessor,submitCourseID,groupName,note} = this.state
+    const {submitExpert,students,submitCourseID,groupName,notes} = this.state
     var submitStudents=[]
     for(var i=0; i < students.length; i++) {
       if(students[i] !== '') {
@@ -110,14 +117,13 @@ export default class GroupStudent extends Component {
     }
     const BODY = {
       name:groupName,
-      note:note,
+      notes:notes,
       courseID:submitCourseID,
-      chiefProfessor:chiefProfessor,
       expert:submitExpert,
       students:submitStudents
     }
 
-    fetch('/group',{
+    fetch('/api1/groups',{
       method:'post',
       headers:HEADER,
       body:JSON.stringify(BODY)
@@ -141,20 +147,22 @@ export default class GroupStudent extends Component {
             <form method="post" onSubmit={this.handleSubmit}>
               <h2 className="text-center">Group Student</h2>
               <div id="class-id" style={{marginTop: 10}}>
-                <small className="form-text">Class ID</small>
-                <select className="form-select" onChange={this.handleClass} defaultValue="">
+                <small className="form-text">Course ID</small>
+                {/* <select className="form-select" onChange={this.handleClass} defaultValue="">
                     {this.state.classInfor.map((item,index) => {
                       return(<option key={index} value={item.ID}>{item.ID}</option>)
                     })}
-                </select>
+                </select> */}
+                <input className="form-control" type="text" onChange={this.saveCourseID}/>
               </div>
               <div id="industry-expert" style={{marginTop: 10}}>
                 <small className="form-text">Industry Expert</small>
-                <select className="form-select" onChange={this.handleExpert} defaultValue="">
+                {/* <select className="form-select" onChange={this.handleExpert} defaultValue="">
                     {this.state.expertsList.map((item,index) => {
                       return(<option key={index} value={item}>{item}</option>)
                     })}
-                </select>
+                </select> */}
+                <input className="form-control" type="text" onChange={this.handleExpert}/>
               </div>
               <div id="group-name" style={{marginTop: 10}}><small className="form-text">Group Name</small>
               <input className="form-control" type="text" onChange={this.saveGroupName}/></div>

@@ -18,7 +18,7 @@ export default class FunctionsTable extends Component {
                     <h4 className="section-heading">Capstone Project</h4>
                     <p className="text-muted">Professors can setup everything about the capstone project course (AF4912), including course, class, report, quiz, project, and milestones.</p>
                     </div>
-                    <div className="col-md-4"><a id="acccount-setup" href="P-2.1.Professor%20account%20setup.html"><span className="fa-stack fa-4x"><i className="fa fa-circle fa-stack-2x text-primary" /><i className="fa fa-link fa-stack-1x fa-inverse" /></span></a>
+                    <div className="col-md-4"><Link id="acccount-setup" to="/professor/account/set"><span className="fa-stack fa-4x"><i className="fa fa-circle fa-stack-2x text-primary" /><i className="fa fa-link fa-stack-1x fa-inverse" /></span></Link>
                     <h4 className="section-heading">Account Setup</h4>
                     <p className="text-muted">Professors can find their students' and industry mentors' accounts, then group all relevant personnel to a course.</p>
                     </div>
@@ -28,7 +28,7 @@ export default class FunctionsTable extends Component {
                     </div>
                 </div>
                 <div className="row text-center">
-                    <div className="col-md-4"><a href="P-4.1.Grading.html"><span className="fa-stack fa-4x"><i className="fa fa-circle fa-stack-2x text-primary" /><i className="fa fa-graduation-cap fa-stack-1x fa-inverse" /></span></a>
+                    <div className="col-md-4"><Link to='/professor/grading/infor'><span className="fa-stack fa-4x"><i className="fa fa-circle fa-stack-2x text-primary" /><i className="fa fa-graduation-cap fa-stack-1x fa-inverse" /></span></Link>
                     <h4 className="section-heading">Grading</h4>
                     <p className="text-muted">Professors can update students' grades here and issue badge to outstanding students.</p>
                     </div>

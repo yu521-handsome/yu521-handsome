@@ -23,8 +23,8 @@ export default class NavigationBar extends Component {
                         <div className="dropdown-menu">
                             <Link className="dropdown-item text-capitalize" to="/professor/capstoneProject/infor">Capstone Project</Link>
                             <Link className="dropdown-item text-capitalize" to="/professor/account/set">Account Setup</Link>
-                            <Link className="dropdown-item text-capitalize" to="">Student Grouping</Link>
-                            <Link className="dropdown-item text-capitalize" to="">Grading</Link>
+                            <Link className="dropdown-item text-capitalize" to="/professor/group/set">Student Grouping</Link>
+                            <Link className="dropdown-item text-capitalize" to="/professor/grading/infor">Grading</Link>
                             <Link className="dropdown-item text-capitalize" to="">Course Report</Link>
                             <Link className="dropdown-item text-capitalize" to="">Badge Setting</Link>
                           </div>
