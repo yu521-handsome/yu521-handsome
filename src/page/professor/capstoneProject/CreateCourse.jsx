@@ -19,7 +19,7 @@ export default class CreateCourse extends Component {
 
   handleSubmit = (event)=> {
     event.preventDefault()
-    const {subjectCode,themeTitle,professor} = this.state
+    const {subjectCode,themeTitle} = this.state
     const HEADER = {
       'Accept':'application/json,text/plain,*/*',
       'Content-Type':'application/json'
