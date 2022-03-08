@@ -50,7 +50,7 @@ export default class CreateQuiz extends Component {
       'Content-Type':'application/json'
     }
     const BODY = {
-      courseID:courseID,
+      courseId:courseID,
       title:title,
       description:description
     }
@@ -59,10 +59,7 @@ export default class CreateQuiz extends Component {
       headers:HEADER,
       body:JSON.stringify(BODY)
     }).then((res)=>{
-      if(res.ok) {
-        return res.json()
-      }
-      return "error"
+      return res.json()
     }).then((data)=>{
       console.log(data)
     }).catch(function(error){
