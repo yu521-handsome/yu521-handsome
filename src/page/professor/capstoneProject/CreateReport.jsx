@@ -82,7 +82,7 @@ export default class CreateReport extends Component {
                 <select className="form-select" onChange={this.saveCourseID} defaultValue="">
                   <option key={-1} value="">Choose a course</option>
                   {this.state.courseInfor.map((item,index) => {
-                    return(<option key={index} value={item.id}>{item.code}</option>)
+                    return(<option key={index} value={item.id}>{item.id}</option>)
                   })}
                 </select>
             </div>
