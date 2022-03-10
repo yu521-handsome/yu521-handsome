@@ -7,14 +7,15 @@ export default class CreateQuiz extends Component {
     title:"",
     courseID:"",
     description:"",
-    courseInfor:[]
+    courseInfor:[],
+    userEmail:"p1@gmail.com"
   }
 
   componentDidMount(){
     const HEADER = {
       'Accept':'application/json,text/plain,*/*'
     }
-    fetch('/api1/courses',{
+    fetch(`/api1/courses?chiefProfessor=${this.state.userEmail}`,{
       method:"get",
       headers:HEADER
     }).then((response)=>{
