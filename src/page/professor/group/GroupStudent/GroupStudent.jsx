@@ -5,70 +5,57 @@ import NavigationBar from '../../../../components/professor/NavigationBar/Naviga
 export default class GroupStudent extends Component {
   state = {
     ok:false,
-    classInfor:[
-      {
-        courseID:"",
-        ID:"",
-        componentCode:"",
-        chiefProfessor:"",
-        experts:[],
-        students:[]
-      }
-    ],
+    courseInfor:[],
     expertsList:[],
-    submitCourseID:"",
+    courseID:"",
     submitExpert:"",
-    chiefProfessor:"brain",
     groupName:"",
     students:['','',''],
     groupID:"",
-    notes:""
-
+    notes:"",
+    userEmail:"p1@gmail.com",
   }
+
   componentDidMount(){
-    //get the class list
-    // const HEADER = {
-    //   'Accept':'application/json,text/plain,*/*'
-    // }
-    // fetch('/api1/classes',{
-    //   method:"get",
-    //   headers:HEADER
-    // }).then((response)=>{
-    //   if(response.ok) {
-    //     return response.json()
-    //   }
-    //   return "error"
-    // }).then((response) => {
-    //   if(response !== "error"){
-    //     this.setState({classInfor:response})
-    //   }
-    // }).catch((e)=>{
-    //   console.log("error")
-    // })
+    //get the course list
+    const HEADER = {
+      'Accept':'application/json,text/plain,*/*'
+    }
+    fetch(`/api1/courses?chiefProfessor=${this.state.userEmail}`,{
+      method:"get",
+      headers:HEADER
+    }).then((response)=>{
+      if(response.ok) {
+        return response.json()
+      }
+      return "error"
+    }).then((response) => {
+      if(response !== "error") {
+        this.setState({courseInfor:response})
+      }
+    }).catch((e)=>{
+      console.log("error")
+    })
   }
 
-  handleClass = (event) => {
-    if(event.target.value !== "null"){
-      let choosedID = event.target.value
+  handleCourse = (event) => {
+    if(event.target.value !== ""){
+      this.setState({courseID:event.target.value})
+      let choosedId = event.target.value
       let expertsList = []
-      const classInfor = this.state.classInfor
-      for(var i=0; i < classInfor.length; i++) {
-        if(classInfor[i].ID === choosedID) {
-          expertsList = classInfor[i].experts.map(item => item)
-          this.setState({submitCourseID:classInfor[i].courseID})
+      const courseInfor = this.state.courseInfor
+      for(var i=0; i < courseInfor.length; i++) {
+        if(courseInfor[i].id === choosedId) {
+          expertsList = courseInfor[i].experts.map(item => item)
         }
       }
       this.setState({expertsList:expertsList})
     }
-    else{
-      this.setState({expertsList:[]})
-    }
   }
 
   handleExpert = (event) => {
-    if(event.target.value !== "null"){
-      let choosedExpert = event.target.value
-      this.setState({submitExpert:choosedExpert})
+    if(event.target.value !== ""){
+      this.setState({submitExpert:event.target.value})
     }
   }
 
@@ -104,7 +91,7 @@ export default class GroupStudent extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    const {submitExpert,students,submitCourseID,groupName,notes} = this.state
+    const {submitExpert,students,courseID,groupName,notes} = this.state
     var submitStudents=[]
     for(var i=0; i < students.length; i++) {
       if(students[i] !== '') {
@@ -118,7 +105,7 @@ export default class GroupStudent extends Component {
     const BODY = {
       name:groupName,
       notes:notes,
-      courseID:submitCourseID,
+      courseID:courseID,
       expert:submitExpert,
       students:submitStudents
     }
@@ -148,20 +135,21 @@ export default class GroupStudent extends Component {
               <h2 className="text-center">Group Student</h2>
               <div id="class-id" style={{marginTop: 10}}>
                 <small className="form-text">Course ID</small>
-                {/* <select className="form-select" onChange={this.handleClass} defaultValue="">
-                    {this.state.classInfor.map((item,index) => {
-                      return(<option key={index} value={item.ID}>{item.ID}</option>)
+                <select className="form-select" onChange={this.handleCourse} defaultValue="">
+                    <option key={-1} value="">Choose a course</option>
+                    {this.state.courseInfor.map((item,index) => {
+                      return(<option key={index} value={item.id}>{item.id}</option>)
                     })}
-                </select> */}
-                <input className="form-control" type="text" onChange={this.saveCourseID}/>
+                </select>
               </div>
               <div id="industry-expert" style={{marginTop: 10}}>
                 <small className="form-text">Industry Expert</small>
-                {/* <select className="form-select" onChange={this.handleExpert} defaultValue="">
+                <select className="form-select" onChange={this.handleExpert} defaultValue="">
+                    <option key={-1} value="">Choose an Expert</option>
                     {this.state.expertsList.map((item,index) => {
                       return(<option key={index} value={item}>{item}</option>)
                     })}
-                </select> */}
+                </select>
                 <input className="form-control" type="text" onChange={this.handleExpert}/>
               </div>
               <div id="group-name" style={{marginTop: 10}}><small className="form-text">Group Name</small>
