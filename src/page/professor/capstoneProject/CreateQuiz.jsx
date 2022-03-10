@@ -6,14 +6,36 @@ export default class CreateQuiz extends Component {
   state = {
     title:"",
     courseID:"",
-    description:""
+    description:"",
+    courseInfor:[],
+    userEmail:"p1@gmail.com"
+  }
+
+  componentDidMount(){
+    const HEADER = {
+      'Accept':'application/json,text/plain,*/*'
+    }
+    fetch(`/api1/courses?chiefProfessor=${this.state.userEmail}`,{
+      method:"get",
+      headers:HEADER
+    }).then((response)=>{
+      if(response.ok) {
+        return response.json()
+      }
+      return "error"
+    }).then((response) => {
+      if(response !== "error") {
+        this.setState({courseInfor:response})
+      }
+    }).catch((e)=>{
+      console.log("error")
+    })
   }
 
   saveTitle = (event) => {
     this.setState({title:event.target.value})
   }
-
-  saveID = (event) => {
+  saveCourseID = (event) => {
     this.setState({courseID:event.target.value})
   }
 
@@ -29,7 +51,7 @@ export default class CreateQuiz extends Component {
       'Content-Type':'application/json'
     }
     const BODY = {
-      courseID:courseID,
+      courseId:courseID,
       title:title,
       description:description
     }
@@ -49,13 +71,20 @@ export default class CreateQuiz extends Component {
     return (
       <div>
         <NavigationBar/>
-        <section id="quiz-setup" className="contact-clean" style={{background: 'rgba(249,242,243,0.98)', marginTop: '7%'}}>
+        <section id="quiz-setup" className="contact-clean" style={{background: 'rgba(249,242,243,0.98)', marginTop: '7%',paddingRight: '50px',paddingLeft: '50px'}}>
           <form method="post" onSubmit={this.handleSubmit}>
             <h2 className="text-center">Course Quiz Setup</h2>
             <div id="report-name-1" className="mb-3"><small className="form-text">Quiz Name</small>
             <input className="form-control" type="text" onChange={this.saveTitle}/></div>
-            <div id="course-id-1" className="mb-3"><small className="form-text">Course ID</small>
-            <input className="form-control" type="text" onChange={this.saveID}/></div>
+            <div id="course-id-1" className="mb-3">
+                <small className="form-text">Course ID</small>
+                <select className="form-select" onChange={this.saveCourseID} defaultValue="">
+                  <option key={-1} value="">Choose a course</option>
+                  {this.state.courseInfor.map((item,index) => {
+                    return(<option key={index} value={item.id}>{item.id}</option>)
+                  })}
+                </select>
+            </div>
             <div id="report-description-1" className="mb-3"><small className="form-text">Quiz Description</small>
             <textarea className="form-control form-control-sm" defaultValue={""} onChange={this.saveDescription}/></div>
             <div className="mb-3">
