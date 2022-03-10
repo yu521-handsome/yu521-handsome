@@ -150,7 +150,6 @@ export default class GroupStudent extends Component {
                       return(<option key={index} value={item}>{item}</option>)
                     })}
                 </select>
-                <input className="form-control" type="text" onChange={this.handleExpert}/>
               </div>
               <div id="group-name" style={{marginTop: 10}}><small className="form-text">Group Name</small>
               <input className="form-control" type="text" onChange={this.saveGroupName}/></div>
