@@ -71,7 +71,11 @@ export default class SetAccount extends Component {
             break
           }
         }
-        this.setState({students:data})
+        var final = []
+        for(var i = 0; i < data.length; i++) {
+          final.push(data[i].email)
+        }
+        this.setState({students:final})
       } catch (e) {
         console.log('error file type');
         return;
@@ -94,7 +98,11 @@ export default class SetAccount extends Component {
             break
           }
         }
-        this.setState({experts:data})
+        var final = []
+        for(var i = 0; i < data.length; i++) {
+          final.push(data[i].email)
+        }
+        this.setState({experts:final})
       } catch (e) {
         console.log('error file type');
         return;
@@ -105,7 +113,7 @@ export default class SetAccount extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    const {classID, experts,students} = this.state
+    const {courseId, experts,students} = this.state
     const HEADER = {
       'Accept':'application/json,text/plain,*/*',
       'Content-Type':'application/json'
@@ -114,7 +122,7 @@ export default class SetAccount extends Component {
       experts:experts,
       students:students
     }
-    fetch(`/classes/${classID}`,{
+    fetch(`/courses/${courseId}`,{
       method:'patch',
       headers:HEADER,
       body:JSON.stringify(BODY)

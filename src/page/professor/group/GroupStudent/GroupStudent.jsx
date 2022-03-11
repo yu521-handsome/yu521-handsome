@@ -105,7 +105,7 @@ export default class GroupStudent extends Component {
     const BODY = {
       name:groupName,
       notes:notes,
-      courseID:courseID,
+      courseId:courseID,
       expert:submitExpert,
       students:submitStudents
     }

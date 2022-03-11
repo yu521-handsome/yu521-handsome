@@ -1,31 +1,32 @@
 import React, { Component } from 'react'
 import PageNav from '../PageNav/PageNav';
 
-//this is the overall grading table. It needs to pass the prop of overallRecords
+//this is the overall grading table. It needs to pass the prop of courseRecord
 export default class GradingTable extends Component {
     state= {
         pageCurr:1,
         listNumber:10,
-        overallRecords:this.props.overallRecords
+        courseRecord:this.props.courseRecord,
+        courseId:this.props.courseId
     }
 
     //create the data showing in the table
     createShowData() {
-        const {overallRecords,listNumber,pageCurr} = this.state
+        const {courseRecord,listNumber,pageCurr} = this.state
         let showingRow = []
         for(var i=listNumber*(pageCurr-1); i < listNumber*pageCurr; i++) {
-            if(i === overallRecords.length) {
+            if(i === courseRecord.length) {
                 break
             }
             let index = i
             //not be graded
-            if(overallRecords[i].gradeByProfessor === "") {
+            if(courseRecord[i].gradeByProfessor === "") {
                 showingRow.push(
                     <tr>
-                        <td className="text-truncate" style={{maxWidth: 200}}>{overallRecords[index].groupID}</td>
-                        <td className="text-truncate" style={{maxWidth: 200}}>{overallRecords[index].groupName}</td>
+                        <td className="text-truncate" style={{maxWidth: 200}}>{courseRecord[index].student.email}</td>
+                        <td className="text-truncate" style={{maxWidth: 200}}>{courseRecord[index].student.name}</td>
                         <td>
-                            <select value={overallRecords[index].gradeByProfessor} onChange={(event) => this.saveGrade(index,event)}>
+                            <select value={courseRecord[index].grade} onChange={(event) => this.saveGrade(index,event)}>
                                 <option key={0} value="">-</option>
                                 <option key={1} value="A">A</option>
                                 <option key={2} value="B">B</option>
@@ -45,10 +46,10 @@ export default class GradingTable extends Component {
             else{
                 showingRow.push(
                     <tr>
-                        <td className="text-truncate" style={{maxWidth: 200}}>{overallRecords[index].groupID}</td>
-                        <td className="text-truncate" style={{maxWidth: 200}}>{overallRecords[index].groupName}</td>
+                        <td className="text-truncate" style={{maxWidth: 200}}>{courseRecord[index].student.email}</td>
+                        <td className="text-truncate" style={{maxWidth: 200}}>{courseRecord[index].student.name}</td>
                         <td>
-                            <select value={overallRecords[index].gradeByProfessor} onChange={(event) => this.saveGrade(index,event)}>
+                            <select value={courseRecord[index].grade} onChange={(event) => this.saveGrade(index,event)}>
                                 <option key={0} value="">-</option>
                                 <option key={1} value="A">A</option>
                                 <option key={2} value="B">B</option>
@@ -69,9 +70,9 @@ export default class GradingTable extends Component {
 
     //save the grade after user chosen
     saveGrade = (index,event) => {
-        const {overallRecords} = this.state
-        overallRecords[index].gradeByProfessor = event.target.value
-        this.setState({overallRecords})
+        const {courseRecord} = this.state
+        courseRecord[index].grade = event.target.value
+        this.setState({courseRecord})
     }
 
     //call back function to get the current page from PageNav
@@ -80,13 +81,13 @@ export default class GradingTable extends Component {
     }
 
     handleSubmit = async ()=> {
-        const {overallRecords} = this.state
+        const {courseRecord} = this.state
         //build the submit data
         let submitData = []
-        for(var i = 0; i < overallRecords.length; i++) {
+        for(var i = 0; i < courseRecord.length; i++) {
             let oneRecord = {
-                overallRecordID:overallRecords[i].ID,
-                grade:overallRecords[i].gradeByProfessor
+                id:courseRecord[i].id,
+                grade:courseRecord[i].grade
             }
             submitData.push(oneRecord)
         }
@@ -97,7 +98,7 @@ export default class GradingTable extends Component {
         const BODY = {
             gradedRecords:submitData
         }
-          fetch('/api1/overall-records',{
+          fetch(`/api1/course-records?courseId=${this.state.courseId}`,{
             method:'patch',
             headers:HEADER,
             body:JSON.stringify(BODY)
@@ -112,7 +113,7 @@ export default class GradingTable extends Component {
     }
 
     render() {
-        const {overallName} = this.props
+        const {courseName} = this.props
         const showingData = this.createShowData.bind(this)()
         return (
             <div>
@@ -124,7 +125,7 @@ export default class GradingTable extends Component {
                             <div className="col-xl-10 col-xxl-9">
                                 <div className="card shadow">
                                 <div className="card-header d-flex flex-wrap justify-content-center align-items-center justify-content-sm-between gap-3">
-                                    <h4 className="display-6 text-capitalize mb-0" style={{width: 'auto'}}><strong>Grade for &lt;{overallName}&gt;</strong></h4>
+                                    <h4 className="display-6 text-capitalize mb-0" style={{width: 'auto'}}><strong>Grade for &lt;{courseName}&gt;</strong></h4>
                                     <p>Note: All the students of course id and class id have been listed below. Please select grade for them.</p>
                                 </div>
                                 <div className="card-body">
@@ -132,8 +133,8 @@ export default class GradingTable extends Component {
                                     <table className="table table-striped table-hover">
                                         <thead>
                                         <tr>
-                                            <th>Group ID</th>
-                                            <th>Group Name</th>
+                                            <th>Student Email</th>
+                                            <th>Student Name</th>
                                             <th>Grade</th>
                                             <th className="text-center">Confirm&amp;Sign</th>
                                         </tr>
@@ -146,7 +147,7 @@ export default class GradingTable extends Component {
                                 </div>
                                 <div className="card-footer">
                                     <nav>
-                                        <PageNav totalPage = { Math.ceil(this.state.overallRecords.length/this.state.listNumber)} changeCurrent = {this.changeCurrent}/>
+                                        <PageNav totalPage = { Math.ceil(this.state.courseRecord.length/this.state.listNumber)} changeCurrent = {this.changeCurrent}/>
                                     </nav>
                                 </div>
                                 <button className="btn btn-primary" style={{marginLeft: 'auto', /*marginRight: 1000, */width: '211.438px'}} href="#modal-1" data-bs-target="#modal-1" data-bs-toggle="modal" onClick={this.handleSubmit}>CONFIRM AND SIGN</button>
