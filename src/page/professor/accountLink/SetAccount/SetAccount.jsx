@@ -122,8 +122,8 @@ export default class SetAccount extends Component {
       experts:experts,
       students:students
     }
-    fetch(`/courses/${courseId}`,{
-      method:'patch',
+    fetch(`/api1/courses/${courseId}`,{
+      method:'PATCH',
       headers:HEADER,
       body:JSON.stringify(BODY)
     }).then((res)=>{
