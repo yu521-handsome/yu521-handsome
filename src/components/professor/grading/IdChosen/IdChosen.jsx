@@ -18,7 +18,7 @@ export default class IdChosen extends Component {
                         <div style={{marginTop: 20}}>
                             <small className="form-text">{listTitle}</small>
                             <select className="form-select" defaultValue="" onChange={this.saveId}>
-                                <option key={-1} value="null">{""}</option>
+                                <option key={-1} value="">Choose a courseId</option>
                                 {idList.map((item,index) => {
                                     return(<option key={index} value={item}>{item}</option>)
                                 })}

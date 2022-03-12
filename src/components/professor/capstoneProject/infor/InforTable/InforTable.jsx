@@ -10,7 +10,6 @@ export default class InforTable extends Component {
                 <div className="card-header">
                     <ul className="nav nav-tabs card-header-tabs" role="tablist">
                         <li className="nav-item"><Link className="nav-link" to="/professor/capstoneProject/infor/course">Course</Link></li>
-                        <li className="nav-item"><Link className="nav-link" to="/professor/capstoneProject/infor/class">Class</Link></li>
                         <li className="nav-item"><Link className="nav-link" to="/professor/capstoneProject/infor/project">Project</Link></li>
                         <li className="nav-item"><Link className="nav-link" to="/professor/capstoneProject/infor/report">Report</Link></li>
                         <li className="nav-item"><Link className="nav-link" to="/professor/capstoneProject/infor/quiz">Quiz</Link></li>
