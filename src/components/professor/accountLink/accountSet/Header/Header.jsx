@@ -12,8 +12,7 @@ export default class Header extends Component {
                     <Link className="btn btn-primary btn-lg" role="button" to="/professor/account/infor">Account Information</Link>
                     <div className="row" style={{marginTop: 20}}>
                         <div className="col">
-                            <p>Student List Template :&nbsp;<a className="d-inline-flex">StudentListTemplate.xlsx</a></p>
-                            <p>Industry Expert List Template:&nbsp;<a className="d-inline-flex">IndustryExpertListTemplate.xlsx</a></p>
+                            <p>Download :&nbsp;<a class="d-inline-flex" href="#" style="padding-left: 0px;width: 20%;">StudentListTemplate.xlsx</a><a class="d-inline-flex" href="#" style="padding-left: 0px;">IndustryExpertListTemplate.xlsx</a></p>
                         </div>
                     </div>
                 </div>
