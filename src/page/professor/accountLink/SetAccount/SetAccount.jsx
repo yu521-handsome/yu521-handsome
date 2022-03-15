@@ -139,7 +139,7 @@ export default class SetAccount extends Component {
         <div>
           <NavigationBar/>
           <Header/>
-          <section className="contact-clean" style={{background: 'rgba(249,242,243,0.98)',paddingRight: '40px',paddingLeft: '40px'}}>
+          <section className="contact-clean" style={{background: 'rgba(249,242,243,0.98)',paddingRight:'40px', paddingLeft:'40px'}}>
             <form method="post" style={{padding: 40, maxWidth: 700}} onSubmit = {this.handleSubmit}>
               <h2 className="text-center">Account Linking</h2>
               <div id="course-id-1" className="mb-3">
