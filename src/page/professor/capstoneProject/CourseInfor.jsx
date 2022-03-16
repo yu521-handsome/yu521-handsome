@@ -8,33 +8,114 @@ export default class CourseInfor extends Component {
     userEmail:"p1@gmail.com"
   }
   //create courseInfor
-  componentDidMount(){
+  async componentDidMount(){
     let courseInfor = []
     let courseList = []
-    let projectList = []
-    let quizzesList = []
-    let reprotList = []
 
-    courseList = this.getCourses()
+
+    //get all courses
+    const HEADER = {
+      'Accept':'application/json,text/plain,*/*'
+    }
+    //get course
+    await fetch(`/api1/courses?chiefProfessor=${this.state.userEmail}`,{
+      method:"get",
+      headers:HEADER
+    }).then((response)=>{
+      if(response.ok) {
+        return response.json()
+      }
+      return "error"
+    }).then((response) => {
+      if(response !== "error") {
+        courseList = response
+      }
+      else {
+        alert("Courses get failed")
+      }
+    }).catch((e)=>{
+      console.log("error")
+    })
     
     for(var i = 0; i < courseList.length; i++) {
+      let projectsList = []
+      let quizzesList = []
+      let reportsList = []
       const courseId = courseList[i].id
       const courseTheme = courseList[i].theme
-      projectList = this.getProjects(courseId)
-      quizzesList = this.getQuizzes(courseId)
-      reprotList = this.getReports(courseId)
+
+      //get projects
+      await fetch(`/api1/projects?courseId=${courseId}`,{
+        method:"get",
+        headers:HEADER
+      }).then((response)=>{
+        if(response.ok) {
+          return response.json()
+        }
+        return "error"
+      }).then((response) => {
+        if(response !== "error") {
+          projectsList = response
+        }
+        else {
+          alert("Projects get failed")
+        }
+      }).catch((e)=>{
+        console.log("error")
+      })
+
+      //get projects
+      await fetch(`/api1/quizzes?courseId=${courseId}`,{
+        method:"get",
+        headers:HEADER
+      }).then((response)=>{
+        if(response.ok) {
+          return response.json()
+        }
+        return "error"
+      }).then((response) => {
+        if(response !== "error") {
+          quizzesList = response
+        }
+        else {
+          alert("Quizzes get failed")
+        }
+      }).catch((e)=>{
+        console.log("error")
+      })
+
+      //get projects
+      await fetch(`/api1/reports?courseId=${courseId}`,{
+        method:"get",
+        headers:HEADER
+      }).then((response)=>{
+        if(response.ok) {
+          return response.json()
+        }
+        return "error"
+      }).then((response) => {
+        if(response !== "error") {
+          reportsList = response
+        }
+        else {
+          alert("Reports get failed")
+        }
+      }).catch((e)=>{
+        console.log("error")
+      })
+
       let projectId = []
       let reportId = []
       let quizzId = []
       var j
-      for(j = 0; j < projectList.length; j++) {
-        projectId.push(projectList[i].id)
+      for(j = 0; j < projectsList.length; j++) {
+        projectId.push(projectsList[i].id)
       }
       for(j = 0; j < quizzesList.length; j++) {
         quizzId.push(quizzesList[i].id)
       }
-      for(j = 0; j < reprotList.length; j++) {
-        reportId.push(reprotList[i].id)
+      for(j = 0; j < reportsList.length; j++) {
+        reportId.push(reportsList[i].id)
       }
       let oneCourseInfor = {
         courseId:courseId,
@@ -49,13 +130,13 @@ export default class CourseInfor extends Component {
     this.setState({courseInfor})
   }
 
-  getCourses() {
+  async getCourses() {
     let courseList = []
     const HEADER = {
       'Accept':'application/json,text/plain,*/*'
     }
     //get course
-    fetch(`/api1/courses?chiefProfessor=${this.state.userEmail}`,{
+    await fetch(`/api1/courses?chiefProfessor=${this.state.userEmail}`,{
       method:"get",
       headers:HEADER
     }).then((response)=>{
@@ -76,13 +157,13 @@ export default class CourseInfor extends Component {
     return courseList
   }
 
-  getProjects(courseId) {
+  async getProjects(courseId) {
     let projectsList = []
     const HEADER = {
       'Accept':'application/json,text/plain,*/*'
     }
     //get projects
-    fetch(`/api1/projects?courseId=${courseId}`,{
+    await fetch(`/api1/projects?courseId=${courseId}`,{
       method:"get",
       headers:HEADER
     }).then((response)=>{
@@ -103,13 +184,13 @@ export default class CourseInfor extends Component {
     return projectsList
   }
 
-  getQuizzes(courseId) {
+  async getQuizzes(courseId) {
     let quizzesList = []
     const HEADER = {
       'Accept':'application/json,text/plain,*/*'
     }
     //get projects
-    fetch(`/api1/quizzes?courseId=${courseId}`,{
+    await fetch(`/api1/quizzes?courseId=${courseId}`,{
       method:"get",
       headers:HEADER
     }).then((response)=>{
@@ -130,13 +211,13 @@ export default class CourseInfor extends Component {
     return quizzesList
   }
 
-  getReports(courseId) {
+  async getReports(courseId) {
     let reportsList = []
     const HEADER = {
       'Accept':'application/json,text/plain,*/*'
     }
     //get projects
-    fetch(`/api1/reports?courseId=${courseId}`,{
+    await fetch(`/api1/reports?courseId=${courseId}`,{
       method:"get",
       headers:HEADER
     }).then((response)=>{
@@ -163,8 +244,8 @@ export default class CourseInfor extends Component {
                 <h4>Capstone Project - Course Information</h4>
                 <p>The table below shows all the information of courses you set up. You can setup a new course. You can also change or update the information of existing courses.</p>
                 <Link className="btn btn-primary" role="button" to="/professor/capstoneProject/createCourse">Setup Course</Link>
-                {this.state.courseInfor.map((item) => {
-                    return(<CourseInforTable courseInfor = {item}/>)
+                {this.state.courseInfor.map((item,index) => {
+                    return(<CourseInforTable courseInfor = {item} key = {index}/>)
                   })}
                 <div style={{width: '50%', marginLeft: '25%', marginRight: '25%'}}>
                 <div className="dropdown" style={{marginTop: '10%'}}><button className="btn btn-primary dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button">Change Information&nbsp;</button>
