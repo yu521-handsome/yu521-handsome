@@ -8,38 +8,17 @@ export default class ReportInfor extends Component {
         userEmail:"p1@gmail.com"
     }
     //create projectInfor
-    componentDidMount(){
+    async componentDidMount(){
         let reportInfor = []
         let courseList = []
-        let reportList = []
+        let reportsList = []
 
-        courseList = this.getCourses()
-        
-        for(var i = 0; i < courseList.length; i++) {
-            const courseId = courseList[i].id
-            const courseTheme = courseList[i].theme
-            reportList = this.getReprots(courseId)
-            var j;
-            for(j = 0; j < reportList.length; j++) {
-                let oneReportInfor = {
-                    courseTheme:courseTheme,
-                    reportId:reportList[j].id,
-                    title:reportList[j].title,
-                    description:reportList[j].description
-                }
-                reportInfor.push(oneReportInfor)
-            }
-        }
-        this.setState({reportInfor})
-    }
-
-    getCourses() {
-        let courseList = []
+       //get all courses
         const HEADER = {
             'Accept':'application/json,text/plain,*/*'
         }
         //get course
-        fetch(`/api1/courses?chiefProfessor=${this.state.userEmail}`,{
+        await fetch(`/api1/courses?chiefProfessor=${this.state.userEmail}`,{
             method:"get",
             headers:HEADER
         }).then((response)=>{
@@ -57,34 +36,41 @@ export default class ReportInfor extends Component {
         }).catch((e)=>{
             console.log("error")
         })
-        return courseList
-        }
-
-    getReprots(courseId) {
-        let reprotList = []
-        const HEADER = {
-            'Accept':'application/json,text/plain,*/*'
-        }
-        //get projects
-        fetch(`/api1/reports?courseId=${courseId}`,{
-            method:"get",
-            headers:HEADER
-        }).then((response)=>{
-            if(response.ok) {
-            return response.json()
-            }
-            return "error"
-        }).then((response) => {
-            if(response !== "error") {
-                reprotList = response
-            }
-            else {
+        
+        for(var i = 0; i < courseList.length; i++) {
+            const courseId = courseList[i].id
+            const courseTheme = courseList[i].theme
+            //get reports
+            await fetch(`/api1/reports?courseId=${courseId}`,{
+                method:"get",
+                headers:HEADER
+            }).then((response)=>{
+                if(response.ok) {
+                return response.json()
+                }
+                return "error"
+            }).then((response) => {
+                if(response !== "error") {
+                reportsList = response
+                }
+                else {
                 alert("Reports get failed")
+                }
+            }).catch((e)=>{
+                console.log("error")
+            })
+            var j;
+            for(j = 0; j < reportsList.length; j++) {
+                let oneReportInfor = {
+                    courseTheme:courseTheme,
+                    reportId:reportsList[j].id,
+                    title:reportsList[j].title,
+                    description:reportsList[j].description
+                }
+                reportInfor.push(oneReportInfor)
             }
-        }).catch((e)=>{
-            console.log("error")
-        })
-        return reprotList
+        }
+        this.setState({reportInfor})
     }
   render() {
     return (
@@ -93,8 +79,8 @@ export default class ReportInfor extends Component {
                 <h4>Capstone Project - Report Information</h4>
                 <p>The table below shows all the information of reports you set up. You can setup a new report. You can also change or update the information of existing reports.<br /></p>
                 <Link className="btn btn-primary" role="button" to="/professor/capstoneProject/createReport">Setup Report</Link>
-                {this.state.reportInfor.map((item) => {
-                    return(<ReportInforTable reportInfor={item}/>)
+                {this.state.reportInfor.map((item,index) => {
+                    return(<ReportInforTable key={index} reportInfor={item}/>)
                   })}
                 <div style={{width: '50%', marginLeft: '25%', marginRight: '25%'}}>
                     <div className="dropdown" style={{marginTop: '10%'}}><button className="btn btn-primary dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button">Change Information&nbsp;</button>

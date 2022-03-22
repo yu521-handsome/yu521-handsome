@@ -64,7 +64,7 @@ export default class CourseInfor extends Component {
         console.log("error")
       })
 
-      //get projects
+      //get quizzes
       await fetch(`/api1/quizzes?courseId=${courseId}`,{
         method:"get",
         headers:HEADER
@@ -84,7 +84,7 @@ export default class CourseInfor extends Component {
         console.log("error")
       })
 
-      //get projects
+      //get reports
       await fetch(`/api1/reports?courseId=${courseId}`,{
         method:"get",
         headers:HEADER
@@ -130,113 +130,6 @@ export default class CourseInfor extends Component {
     this.setState({courseInfor})
   }
 
-  async getCourses() {
-    let courseList = []
-    const HEADER = {
-      'Accept':'application/json,text/plain,*/*'
-    }
-    //get course
-    await fetch(`/api1/courses?chiefProfessor=${this.state.userEmail}`,{
-      method:"get",
-      headers:HEADER
-    }).then((response)=>{
-      if(response.ok) {
-        return response.json()
-      }
-      return "error"
-    }).then((response) => {
-      if(response !== "error") {
-        courseList = response
-      }
-      else {
-        alert("Courses get failed")
-      }
-    }).catch((e)=>{
-      console.log("error")
-    })
-    return courseList
-  }
-
-  async getProjects(courseId) {
-    let projectsList = []
-    const HEADER = {
-      'Accept':'application/json,text/plain,*/*'
-    }
-    //get projects
-    await fetch(`/api1/projects?courseId=${courseId}`,{
-      method:"get",
-      headers:HEADER
-    }).then((response)=>{
-      if(response.ok) {
-        return response.json()
-      }
-      return "error"
-    }).then((response) => {
-      if(response !== "error") {
-        projectsList = response
-      }
-      else {
-        alert("Projects get failed")
-      }
-    }).catch((e)=>{
-      console.log("error")
-    })
-    return projectsList
-  }
-
-  async getQuizzes(courseId) {
-    let quizzesList = []
-    const HEADER = {
-      'Accept':'application/json,text/plain,*/*'
-    }
-    //get projects
-    await fetch(`/api1/quizzes?courseId=${courseId}`,{
-      method:"get",
-      headers:HEADER
-    }).then((response)=>{
-      if(response.ok) {
-        return response.json()
-      }
-      return "error"
-    }).then((response) => {
-      if(response !== "error") {
-        quizzesList = response
-      }
-      else {
-        alert("Quizzes get failed")
-      }
-    }).catch((e)=>{
-      console.log("error")
-    })
-    return quizzesList
-  }
-
-  async getReports(courseId) {
-    let reportsList = []
-    const HEADER = {
-      'Accept':'application/json,text/plain,*/*'
-    }
-    //get projects
-    await fetch(`/api1/reports?courseId=${courseId}`,{
-      method:"get",
-      headers:HEADER
-    }).then((response)=>{
-      if(response.ok) {
-        return response.json()
-      }
-      return "error"
-    }).then((response) => {
-      if(response !== "error") {
-        reportsList = response
-      }
-      else {
-        alert("Reports get failed")
-      }
-    }).catch((e)=>{
-      console.log("error")
-    })
-    return reportsList
-  }
   render() {
     return (
         <div>
@@ -245,7 +138,7 @@ export default class CourseInfor extends Component {
                 <p>The table below shows all the information of courses you set up. You can setup a new course. You can also change or update the information of existing courses.</p>
                 <Link className="btn btn-primary" role="button" to="/professor/capstoneProject/createCourse">Setup Course</Link>
                 {this.state.courseInfor.map((item,index) => {
-                    return(<CourseInforTable courseInfor = {item} key = {index}/>)
+                    return(<CourseInforTable key={index} courseInfor = {item}/>)
                   })}
                 <div style={{width: '50%', marginLeft: '25%', marginRight: '25%'}}>
                 <div className="dropdown" style={{marginTop: '10%'}}><button className="btn btn-primary dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button">Change Information&nbsp;</button>

@@ -6,6 +6,9 @@ import RoleEntry from '../../components/main/RoleEntry/RoleEntry';
 
 //This page is the main page of the whole web page
 export default class Main extends Component {
+    componentDidMount() {
+        window.scrollTo(0,0)
+    }
   render() {
     return (
         <div id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset={54}>

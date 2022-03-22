@@ -45,8 +45,8 @@ export default class CourseInforTable extends Component {
                         </div>
                         <div className="col-lg-8" style={{width: '574.328px', borderWidth: 10, height: 'auto', margin: '-1px'}}>
                             <p style={{width: '80%', height: '60%', fontFamily: 'Actor, sans-serif', borderWidth: 1, borderLeftStyle: 'none', marginTop: 5, marginLeft: 0}}>
-                                {projectId.map((item) => {
-                                    return(<span style={{textDecoration: 'underline'}}>{item}&nbsp;</span>)
+                                {projectId.map((item,index) => {
+                                    return(<span key={index} style={{textDecoration: 'underline'}}>{item}&nbsp;</span>)
                                 })}
                             </p>
                         </div>
@@ -63,8 +63,8 @@ export default class CourseInforTable extends Component {
                         </div>
                         <div className="col-lg-8" style={{width: '574.328px', borderWidth: 10, height: 'auto', margin: '-1px'}}>
                             <p style={{width: '80%', height: '60%', fontFamily: 'Actor, sans-serif', borderWidth: 1, borderLeftStyle: 'none', marginTop: 5, marginLeft: 0}}>
-                                {reportId.map((item) => {
-                                    return(<span style={{textDecoration: 'underline'}}>{item}&nbsp;</span>)
+                                {reportId.map((item,index) => {
+                                    return(<span key={index} style={{textDecoration: 'underline'}}>{item}&nbsp;</span>)
                                 })}
                             </p>
                         </div>
@@ -81,8 +81,8 @@ export default class CourseInforTable extends Component {
                         </div>
                         <div className="col-lg-8" style={{width: '574.328px', borderWidth: 10, height: 'auto', margin: '-1px'}}>
                             <p style={{width: '80%', height: '60%', fontFamily: 'Actor, sans-serif', borderWidth: 1, borderLeftStyle: 'none', marginTop: 5, marginLeft: 0}}>
-                                {quizzId.map((item) => {
-                                    return(<span style={{textDecoration: 'underline'}}>{item}&nbsp;</span>)
+                                {quizzId.map((item,index) => {
+                                    return(<span key={index} style={{textDecoration: 'underline'}}>{item}&nbsp;</span>)
                                 })}
                             </p>
                         </div>
@@ -99,8 +99,8 @@ export default class CourseInforTable extends Component {
                         </div>
                         <div className="col-lg-8" style={{width: '574.328px', borderWidth: 10, height: 'auto', margin: '-1px'}}>
                             <p style={{width: '80%', height: '60%', fontFamily: 'Actor, sans-serif', borderWidth: 1, borderLeftStyle: 'none', marginTop: 5, marginLeft: 0}}>
-                                {mileStoneId.map((item) => {
-                                    return(<span style={{textDecoration: 'underline'}}>{item}&nbsp;</span>)
+                                {mileStoneId.map((item,index) => {
+                                    return(<span key={index} style={{textDecoration: 'underline'}}>{item}&nbsp;</span>)
                                 })}
                             </p>
                         </div>

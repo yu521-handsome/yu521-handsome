@@ -13,12 +13,13 @@ export default class SetAccount extends Component {
     userEmail:"p1@gmail.com"
   }
 
-  componentDidMount(){
+  async componentDidMount(){
     //get the courseId
+    window.scrollTo(0,0)
     const HEADER = {
       'Accept':'application/json,text/plain,*/*'
     }
-    fetch(`/api1/courses?chiefProfessor=${this.state.userEmail}`,{
+    await fetch(`/api1/courses?chiefProfessor=${this.state.userEmail}`,{
       method:"get",
       headers:HEADER
     }).then((response)=>{

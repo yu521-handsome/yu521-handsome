@@ -8,6 +8,9 @@ import NavigationBar from '../../../../components/professor/NavigationBar/Naviga
 
 
 export default class GradingInfor extends Component {
+  componentDidMount(){
+    window.scrollTo(0,0)
+  }
   render() {
     return (
     <div> 

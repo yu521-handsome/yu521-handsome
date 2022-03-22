@@ -17,6 +17,7 @@ export default class GroupStudent extends Component {
   }
 
   componentDidMount(){
+    window.scrollTo(0,0)
     //get the course list
     const HEADER = {
       'Accept':'application/json,text/plain,*/*'

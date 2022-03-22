@@ -16,11 +16,12 @@ export default class GradeOverall extends Component {
   }
 
   //fetch the all the courseId and create the idList
-  componentDidMount(){
+  async componentDidMount(){
+    window.scrollTo(0,0)
     const HEADER = {
       'Accept':'application/json,text/plain,*/*'
     }
-    fetch(`/api1/courses?chiefProfessor=${this.state.userEmail}`,{
+    await fetch(`/api1/courses?chiefProfessor=${this.state.userEmail}`,{
       method:"get",
       headers:HEADER
     }).then((response)=>{
@@ -86,8 +87,8 @@ export default class GradeOverall extends Component {
 
   render() {
     const idFormInfor = {
-      title:"Grade overalls",
-      notice:"Please choose Course id to grade for the students.",
+      title:"Grade Course Completion",
+      notice:"Please choose Course ID to give overall grade for the students.",
       listTitle:"Course ID",
       idList:this.state.idList,
       search:this.search
@@ -96,7 +97,7 @@ export default class GradeOverall extends Component {
       <div>
         <NavigationBar/>
         <IdChosen formInfor={idFormInfor}/>
-        <GradingTable courseRecord={this.state.courseRecord} courseName={this.state.chosenTitle} courseId={this.state.chosenId}/>
+        <GradingTable courseRecord={this.state.courseRecord} courseId={this.state.chosenId}/>
         <SuccessNotice/>
       </div>
     )
