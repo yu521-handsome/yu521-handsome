@@ -115,13 +115,26 @@ export default class SetAccount extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
     const {courseId, experts,students} = this.state
+    let submitStudents = []
+    let submitExperts = []
+    let i;
+    for(i = 0; i < students.length; i++) {
+      let oneRecord = {email:students[i]}
+      submitStudents.push(oneRecord)
+    }
+
+    for(i = 0; i < experts.length; i++) {
+      let oneRecord = {email:experts[i]}
+      submitExperts.push(oneRecord)
+    }
+
     const HEADER = {
       'Accept':'application/json,text/plain,*/*',
       'Content-Type':'application/json'
     }
     const BODY = {
-      experts:experts,
-      students:students
+      experts:submitExperts,
+      students:submitStudents
     }
     fetch(`/api1/courses/${courseId}`,{
       method:'PATCH',
