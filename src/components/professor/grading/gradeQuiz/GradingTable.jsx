@@ -3,15 +3,19 @@ import PageNav from '../PageNav/PageNav';
 
 //this is the quiz grading table. It needs to pass the prop of quizRecords
 export default class GradingTable extends Component {
-    state= {
-        pageCurr:1,
-        listNumber:10,
-        quizRecords:this.props.quizRecords
+    constructor(props) {
+        super();
+        this.state ={
+            pageCurr:1,
+            listNumber:10,
+            quizRecords:props.quizRecords
+        }
     }
 
     //create the data showing in the table
     createShowData() {
-        const {quizRecords,listNumber,pageCurr} = this.state
+        const {listNumber,pageCurr} = this.state
+        const {quizRecords} = this.props
         let showingRow = []
         for(var i=listNumber*(pageCurr-1); i < listNumber*pageCurr; i++) {
             if(i === quizRecords.length) {
@@ -22,8 +26,8 @@ export default class GradingTable extends Component {
             if(quizRecords[i].gradeByProfessor === "") {
                 showingRow.push(
                     <tr>
-                        <td className="text-truncate" style={{maxWidth: 200}}>{quizRecords[index].groupID}</td>
-                        <td className="text-truncate" style={{maxWidth: 200}}>{quizRecords[index].groupName}</td>
+                        <td className="text-truncate" style={{maxWidth: 200}}>{quizRecords[index].studentId}</td>
+                        <td className="text-truncate" style={{maxWidth: 200}}>{quizRecords[index].studentName}</td>
                         <td>
                             <select value={quizRecords[index].gradeByProfessor} onChange={(event) => this.saveGrade(index,event)}>
                                 <option key={0} value="">-</option>
@@ -45,8 +49,8 @@ export default class GradingTable extends Component {
             else{
                 showingRow.push(
                     <tr>
-                        <td className="text-truncate" style={{maxWidth: 200}}>{quizRecords[index].groupID}</td>
-                        <td className="text-truncate" style={{maxWidth: 200}}>{quizRecords[index].groupName}</td>
+                        <td className="text-truncate" style={{maxWidth: 200}}>{quizRecords[index].studentId}</td>
+                        <td className="text-truncate" style={{maxWidth: 200}}>{quizRecords[index].studentName}</td>
                         <td>
                             <select value={quizRecords[index].gradeByProfessor} onChange={(event) => this.saveGrade(index,event)}>
                                 <option key={0} value="">-</option>
@@ -69,7 +73,7 @@ export default class GradingTable extends Component {
 
     //save the grade after user chosen
     saveGrade = (index,event) => {
-        const {quizRecords} = this.state
+        const {quizRecords} = this.props
         quizRecords[index].gradeByProfessor = event.target.value
         this.setState({quizRecords})
     }
@@ -85,8 +89,8 @@ export default class GradingTable extends Component {
         let submitData = []
         for(var i = 0; i < quizRecords.length; i++) {
             let oneRecord = {
-                quizRecordID:quizRecords[i].ID,
-                grade:quizRecords[i].gradeByProfessor
+                quizRecordId:quizRecords[i].id,
+                grade:quizRecords[i].grade
             }
             submitData.push(oneRecord)
         }
@@ -98,7 +102,7 @@ export default class GradingTable extends Component {
             gradedRecords:submitData
         }
           fetch('/api1/quiz-records',{
-            method:'patch',
+            method:'PATCH',
             headers:HEADER,
             body:JSON.stringify(BODY)
           }).then((res)=>{
@@ -112,7 +116,7 @@ export default class GradingTable extends Component {
     }
 
     render() {
-        const {quizName} = this.props
+        const {quizId} = this.props
         const showingData = this.createShowData.bind(this)()
         return (
             <div>
@@ -124,8 +128,8 @@ export default class GradingTable extends Component {
                             <div className="col-xl-10 col-xxl-9">
                                 <div className="card shadow">
                                 <div className="card-header d-flex flex-wrap justify-content-center align-items-center justify-content-sm-between gap-3">
-                                    <h4 className="display-6 text-capitalize mb-0" style={{width: 'auto'}}><strong>Grade for &lt;{quizName}&gt;</strong></h4>
-                                    <p>Note: All the students of course id and class id have been listed below. Please select grade for them.</p>
+                                    <h4 className="display-6 text-capitalize mb-0" style={{width: 'auto'}}><strong>Grade for &lt;{quizId}&gt;</strong></h4>
+                                    <p>Note: All the students taking this quiz have been listed below. Please select grade for them.</p>
                                 </div>
                                 <div className="card-body">
                                     <div className="table-responsive">

@@ -13,10 +13,10 @@ export default class Header extends Component {
                     will be shown in the page below. Professors can also
                     <a className="btn btn-light btn-lg" role="button" id="issue-badge" href="#badge-example">Issue Badge</a> 
                     for the outstanding students&nbsp;</p>
-                    <Link className="btn btn-primary btn-lg" role="button" to="/professor/grading/report">Report</Link>
-                    <Link className="btn btn-light btn-lg" role="button" to="/professor/grading/project">Project</Link>
-                    <Link className="btn btn-primary btn-lg" role="button" to="/professor/grading/quiz">Quiz</Link>
-                    <Link className="btn btn-light btn-lg" role="button" to="/professor/grading/overall">Course Completion</Link>
+                    <Link className="btn btn-primary btn-lg" role="button" style={{marginRight:"3%"}} to="/professor/grading/report">Report</Link>
+                    <Link className="btn btn-primary btn-lg" role="button" style={{marginRight:"3%"}} to="/professor/grading/project">Project</Link>
+                    <Link className="btn btn-primary btn-lg" role="button" style={{marginRight:"3%"}} to="/professor/grading/quiz">Quiz</Link>
+                    <Link className="btn btn-primary btn-lg" role="button" style={{marginRight:"3%"}} to="/professor/grading/overall">Course Completion</Link>
                 </div>
             </div>
         </div>

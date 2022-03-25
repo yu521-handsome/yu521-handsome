@@ -3,16 +3,19 @@ import PageNav from '../PageNav/PageNav';
 
 //this is the overall grading table. It needs to pass the prop of courseRecord
 export default class GradingTable extends Component {
-    state= {
-        pageCurr:1,
-        listNumber:10,
-        courseRecord:this.props.courseRecord,
-        courseId:this.props.courseId
+    constructor(props) {
+        super();
+        this.state ={
+            pageCurr:1,
+            listNumber:10,
+            courseRecord:props.courseRecord,
+        }
     }
 
     //create the data showing in the table
     createShowData() {
-        const {courseRecord,listNumber,pageCurr} = this.state
+        const {listNumber,pageCurr} = this.state
+        const {courseRecord} = this.props
         let showingRow = []
         for(var i=listNumber*(pageCurr-1); i < listNumber*pageCurr; i++) {
             if(i === courseRecord.length) {
@@ -20,10 +23,10 @@ export default class GradingTable extends Component {
             }
             let index = i
             //not be graded
-            if(courseRecord[i].gradeByProfessor === "") {
+            if(courseRecord[i].grade === "") {
                 showingRow.push(
                     <tr>
-                        <td className="text-truncate" style={{maxWidth: 200}}>{courseRecord[index].student.email}</td>
+                        <td className="text-truncate" style={{maxWidth: 200}}>{courseRecord[index].student.studentId}</td>
                         <td className="text-truncate" style={{maxWidth: 200}}>{courseRecord[index].student.name}</td>
                         <td>
                             <select value={courseRecord[index].grade} onChange={(event) => this.saveGrade(index,event)}>
@@ -46,7 +49,7 @@ export default class GradingTable extends Component {
             else{
                 showingRow.push(
                     <tr>
-                        <td className="text-truncate" style={{maxWidth: 200}}>{courseRecord[index].student.email}</td>
+                        <td className="text-truncate" style={{maxWidth: 200}}>{courseRecord[index].student.studentId}</td>
                         <td className="text-truncate" style={{maxWidth: 200}}>{courseRecord[index].student.name}</td>
                         <td>
                             <select value={courseRecord[index].grade} onChange={(event) => this.saveGrade(index,event)}>
@@ -70,7 +73,7 @@ export default class GradingTable extends Component {
 
     //save the grade after user chosen
     saveGrade = (index,event) => {
-        const {courseRecord} = this.state
+        const {courseRecord} = this.props
         courseRecord[index].grade = event.target.value
         this.setState({courseRecord})
     }
@@ -98,8 +101,8 @@ export default class GradingTable extends Component {
         const BODY = {
             gradedRecords:submitData
         }
-          fetch(`/api1/course-records?courseId=${this.state.courseId}`,{
-            method:'patch',
+          fetch(`/api1/course-records?courseId=${this.props.courseId}`,{
+            method:'PATCH',
             headers:HEADER,
             body:JSON.stringify(BODY)
           }).then((res)=>{
@@ -133,7 +136,7 @@ export default class GradingTable extends Component {
                                     <table className="table table-striped table-hover">
                                         <thead>
                                         <tr>
-                                            <th>Student Email</th>
+                                            <th>Student ID</th>
                                             <th>Student Name</th>
                                             <th>Grade</th>
                                             <th className="text-center">Confirm&amp;Sign</th>

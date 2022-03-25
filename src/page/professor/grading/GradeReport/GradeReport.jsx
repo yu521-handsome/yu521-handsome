@@ -6,72 +6,72 @@ import NavigationBar from '../../../../components/professor/NavigationBar/Naviga
 
 export default class GradeReport extends Component {
 
-  // reportRecords:[{groupName:"",ID:"",groupID:"",gradeByProfessor:""}]
-  // reportInfor:[{ID:"",title:""}]
+  // reportRecords:[{id:"",studentId:"",studentName:"",grade:"",}]
+  // reportInfor:[{id:"",title:""}]
   state = {
     idList:[],
     chosenId:"",
     chosenTitle:"",
     reportInfor:[],
-    reportRecords:[]
+    reportRecords:[],
+    userEmail:"p1@gmail.com"
   }
 
   //fetch the all the report id
   componentDidMount(){
+    window.scrollTo(0,0)
     const HEADER = {
       'Accept':'application/json,text/plain,*/*'
     }
-    fetch('/api1/reports',{
+    fetch(`/api1/reports?professor=${this.state.userEmail}`,{
       method:"get",
       headers:HEADER
     }).then((response)=>{
       if(response.ok) {
         return response.json()
       }
-      return "error"
+      else{
+        alert("Reprot Get failed")
+        return "error"
+      }
     }).then((response) => {
       if(response !== "error"){
-        this.setState({reportInfor:response})
+        this.reportInfoProcess(response)
       }
     }).catch((e)=>{
       console.log("error")
     })
-
-    let idList = this.createIdList()
-
-    this.setState({idList})
-
   }
 
+  reportInfoProcess(response) {
+    let result=response
+    this.setState({reportInfor:result},function(){
+      this.createIdList()
+    })
+  }
   //create the id List for search
   createIdList(){
     let idList = []
     const {reportInfor} = this.state
     for(var i = 0; i < reportInfor.length; i++) {
-      idList.push(reportInfor[i].ID)
+      idList.push(reportInfor[i].id)
     }
-    return idList
+    this.setState({idList})
   }
 
-  //serach the report-records by reportID
+  //serach the report-records by reportid
   search = (id,event) => {
     event.preventDefault()
-    const {reportInfor} = this.state
-    //save title
-    for(var i=0; i < reportInfor.length; i++) {
-      if(reportInfor[i].ID === id) {
-        this.setState({chosenTitle:reportInfor[i].title})
-      }
-    }
     this.setState({chosenId:id},function(){
       this.doSearch()
     })
   }
+
   async doSearch(){
     const HEADER = {
       'Accept':'application/json,text/plain,*/*'
     }
-    await fetch(`/api1/report-records?reportID=${this.state.chosenId}`,{
+    await fetch(`/api1/report-records?reportId=${this.state.chosenId}`,{
       method:"get",
       headers:HEADER
     }).then((response)=>{
@@ -81,18 +81,32 @@ export default class GradeReport extends Component {
       return "error"
     }).then((response) => {
       if(response !== "error"){
-        this.setState({reportRecords:response})
+        this.recordsProcess(response)
       }
     }).catch((e)=>{
       console.log("error")
     })
   }
 
+  // reportRecords:[{id:"",studentId:"",studentName:"",grade:"",}]
+  recordsProcess(response) {
+    let result=[]
+    for(var i = 1; i < response.length;i++) {
+      let oneRecord={}
+      oneRecord.id=response[i].id
+      oneRecord.studentId = response[i].student.studentId
+      oneRecord.studentName = response[i].student.name
+      oneRecord.grade = response[i].grade
+      result.push(oneRecord)
+    }
+    this.setState({reportRecords:result})
+  }
+
   render() {
     const idFormInfor = {
       title:"Grade Report",
-      notice:"Please choose report id to grade for the students.",
-      listTitle:"Report ID",
+      notice:"Please choose Report id to grade for the students.",
+      listTitle:"Report id",
       idList:this.state.idList,
       search:this.search
     } //use to show information in the id chosen form

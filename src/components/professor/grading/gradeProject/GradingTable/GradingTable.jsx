@@ -3,15 +3,19 @@ import PageNav from '../../PageNav/PageNav';
 
 //this is the project grading table. It needs to pass the prop of projectRecords
 export default class GradingTable extends Component {
-    state= {
-        pageCurr:1,
-        listNumber:10,
-        projectRecords:this.props.projectRecords
+    constructor(props) {
+        super();
+        this.state ={
+            pageCurr:1,
+            listNumber:10,
+            projectRecords:props.projectRecords,
+        }
     }
 
     //create the data showing in the table
     createShowData() {
-        const {projectRecords,listNumber,pageCurr} = this.state
+        const {listNumber,pageCurr} = this.state
+        const {projectRecords} = this.props
         let showingRow = []
         for(var i=listNumber*(pageCurr-1); i < listNumber*pageCurr; i++) {
             if(i === projectRecords.length) {
@@ -22,7 +26,7 @@ export default class GradingTable extends Component {
             if(projectRecords[i].gradeByProfessor === "") {
                 showingRow.push(
                     <tr>
-                        <td className="text-truncate" style={{maxWidth: 200}}>{projectRecords[index].groupID}</td>
+                        <td className="text-truncate" style={{maxWidth: 200}}>{projectRecords[index].groupId}</td>
                         <td className="text-truncate" style={{maxWidth: 200}}>{projectRecords[index].groupName}</td>
                         <td>
                             <select value={projectRecords[index].gradeByProfessor} onChange={(event) => this.saveGrade(index,event)}>
@@ -45,7 +49,7 @@ export default class GradingTable extends Component {
             else{
                 showingRow.push(
                     <tr>
-                        <td className="text-truncate" style={{maxWidth: 200}}>{projectRecords[index].groupID}</td>
+                        <td className="text-truncate" style={{maxWidth: 200}}>{projectRecords[index].groupId}</td>
                         <td className="text-truncate" style={{maxWidth: 200}}>{projectRecords[index].groupName}</td>
                         <td>
                             <select value={projectRecords[index].gradeByProfessor} onChange={(event) => this.saveGrade(index,event)}>
@@ -69,7 +73,7 @@ export default class GradingTable extends Component {
 
     //save the grade after user chosen
     saveGrade = (index,event) => {
-        const {projectRecords} = this.state
+        const {projectRecords} = this.props
         projectRecords[index].gradeByProfessor = event.target.value
         this.setState({projectRecords})
     }
@@ -85,7 +89,7 @@ export default class GradingTable extends Component {
         let submitData = []
         for(var i = 0; i < projectRecords.length; i++) {
             let oneRecord = {
-                projectRecordID:projectRecords[i].ID,
+                projectRecordId:projectRecords[i].id,
                 grade:projectRecords[i].gradeByProfessor
             }
             submitData.push(oneRecord)
@@ -98,7 +102,7 @@ export default class GradingTable extends Component {
             gradedRecords:submitData
         }
           fetch('/api1/project-records',{
-            method:'patch',
+            method:'PATCH',
             headers:HEADER,
             body:JSON.stringify(BODY)
           }).then((res)=>{
@@ -112,7 +116,7 @@ export default class GradingTable extends Component {
     }
 
     render() {
-        const {projectName} = this.props
+        const {projectId} = this.props
         const showingData = this.createShowData.bind(this)()
         return (
             <div> 
@@ -124,8 +128,8 @@ export default class GradingTable extends Component {
                             <div className="col-xl-10 col-xxl-9">
                                 <div className="card shadow">
                                 <div className="card-header d-flex flex-wrap justify-content-center align-items-center justify-content-sm-between gap-3">
-                                    <h4 className="display-6 text-capitalize mb-0" style={{width: 'auto'}}><strong>Grade for &lt;{projectName}&gt;</strong></h4>
-                                    <p>Note: All the students of course id and class id have been listed below. Please select grade for them.</p>
+                                    <h4 className="display-6 text-capitalize mb-0" style={{width: 'auto'}}><strong>Grade for &lt;{projectId}&gt;</strong></h4>
+                                    <p>Note: All the students of Course ID and Group Name have been listed below. Please select grade for them.</p>
                                 </div>
                                 <div className="card-body">
                                     <div className="table-responsive">

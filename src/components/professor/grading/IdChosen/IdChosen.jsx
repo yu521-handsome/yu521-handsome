@@ -11,7 +11,7 @@ export default class IdChosen extends Component {
         const {title, notice, listTitle, idList, search} = this.props.formInfor
         return (
             <div>
-                <section id="input-project" className="contact-clean" style={{background: 'rgba(159,37,54,0.05)', width: '100%', marginLeft: 0, marginRight: 0, marginTop: '7%'}}>
+                <section id="input-project" className="contact-clean" style={{background: 'rgba(159,37,54,0.05)', width: '100%', marginLeft: 0, marginRight: 0, marginTop: '7%', paddingRight:"40px",paddingLeft:'40px'}}>
                     <form method="post" style={{marginTop: 50}} onSubmit={(event) => search(this.state.id,event)}>
                         <h2 className="text-center">{title}</h2>
                         <p style={{textAlign: 'center'}}>{notice}</p>

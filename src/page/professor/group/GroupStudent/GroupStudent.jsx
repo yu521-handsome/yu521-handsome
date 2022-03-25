@@ -47,7 +47,7 @@ export default class GroupStudent extends Component {
       const courseInfor = this.state.courseInfor
       for(var i=0; i < courseInfor.length; i++) {
         if(courseInfor[i].id === choosedId) {
-          expertsList = courseInfor[i].experts.map(item => item)
+          expertsList = courseInfor[i].experts.map(item => item.email)
         }
       }
       this.setState({expertsList:expertsList})
@@ -92,11 +92,13 @@ export default class GroupStudent extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    const {submitExpert,students,courseID,groupName,notes} = this.state
-    var submitStudents=[]
+    let {submitExpert,students,courseID,groupName,notes} = this.state
+    let submitStudents=[]
+    submitExpert = {email:submitExpert}
     for(var i=0; i < students.length; i++) {
       if(students[i] !== '') {
-        submitStudents.push(students[i])
+        let oneRecord = {email:students[i]}
+        submitStudents.push(oneRecord)
       }
     }
     const HEADER = {

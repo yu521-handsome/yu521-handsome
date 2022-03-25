@@ -3,15 +3,19 @@ import PageNav from '../PageNav/PageNav';
 
 //this is the report grading table. It needs to pass the prop of reportRecords
 export default class GradingTable extends Component {
-    state= {
-        pageCurr:1,
-        listNumber:10,
-        reportRecords:this.props.reportRecords
+    constructor(props) {
+        super()
+        this.state ={
+            pageCurr:1,
+            listNumber:10,
+            reportRecords:props.reportRecords,
+        }
     }
 
     //create the data showing in the table
     createShowData() {
-        const {reportRecords,listNumber,pageCurr} = this.state
+        const {listNumber,pageCurr} = this.state
+        const {reportRecords} = this.props
         let showingRow = []
         for(var i=listNumber*(pageCurr-1); i < listNumber*pageCurr; i++) {
             if(i === reportRecords.length) {
@@ -22,8 +26,8 @@ export default class GradingTable extends Component {
             if(reportRecords[i].gradeByProfessor === "") {
                 showingRow.push(
                     <tr>
-                        <td className="text-truncate" style={{maxWidth: 200}}>{reportRecords[index].groupID}</td>
-                        <td className="text-truncate" style={{maxWidth: 200}}>{reportRecords[index].groupName}</td>
+                        <td className="text-truncate" style={{maxWidth: 200}}>{reportRecords[index].studentId}</td>
+                        <td className="text-truncate" style={{maxWidth: 200}}>{reportRecords[index].studentName}</td>
                         <td>
                             <select value={reportRecords[index].gradeByProfessor} onChange={(event) => this.saveGrade(index,event)}>
                                 <option key={0} value="">-</option>
@@ -45,8 +49,8 @@ export default class GradingTable extends Component {
             else{
                 showingRow.push(
                     <tr>
-                        <td className="text-truncate" style={{maxWidth: 200}}>{reportRecords[index].groupID}</td>
-                        <td className="text-truncate" style={{maxWidth: 200}}>{reportRecords[index].groupName}</td>
+                        <td className="text-truncate" style={{maxWidth: 200}}>{reportRecords[index].studentId}</td>
+                        <td className="text-truncate" style={{maxWidth: 200}}>{reportRecords[index].studentName}</td>
                         <td>
                             <select value={reportRecords[index].gradeByProfessor} onChange={(event) => this.saveGrade(index,event)}>
                                 <option key={0} value="">-</option>
@@ -69,7 +73,7 @@ export default class GradingTable extends Component {
 
     //save the grade after user chosen
     saveGrade = (index,event) => {
-        const {reportRecords} = this.state
+        const {reportRecords} = this.props
         reportRecords[index].gradeByProfessor = event.target.value
         this.setState({reportRecords})
     }
@@ -85,8 +89,8 @@ export default class GradingTable extends Component {
         let submitData = []
         for(var i = 0; i < reportRecords.length; i++) {
             let oneRecord = {
-                reportRecordID:reportRecords[i].ID,
-                grade:reportRecords[i].gradeByProfessor
+                reportRecordId:reportRecords[i].id,
+                grade:reportRecords[i].grade
             }
             submitData.push(oneRecord)
         }
@@ -98,7 +102,7 @@ export default class GradingTable extends Component {
             gradedRecords:submitData
         }
           fetch('/api1/report-records',{
-            method:'patch',
+            method:'PATCH',
             headers:HEADER,
             body:JSON.stringify(BODY)
           }).then((res)=>{
@@ -112,7 +116,7 @@ export default class GradingTable extends Component {
     }
 
     render() {
-        const {reportName} = this.props
+        const {reportId} = this.props
         const showingData = this.createShowData.bind(this)()
         return (
             <div>
@@ -124,16 +128,16 @@ export default class GradingTable extends Component {
                             <div className="col-xl-10 col-xxl-9">
                                 <div className="card shadow">
                                 <div className="card-header d-flex flex-wrap justify-content-center align-items-center justify-content-sm-between gap-3">
-                                    <h4 className="display-6 text-capitalize mb-0" style={{width: 'auto'}}><strong>Grade for &lt;{reportName}&gt;</strong></h4>
-                                    <p>Note: All the students of course id and class id have been listed below. Please select grade for them.</p>
+                                    <h4 className="display-6 text-capitalize mb-0" style={{width: 'auto'}}><strong>Grade for &lt;{reportId}&gt;</strong></h4>
+                                    <p>Note: All the students writing this report have been listed below. Please select grade for them.</p>
                                 </div>
                                 <div className="card-body">
                                     <div className="table-responsive">
                                     <table className="table table-striped table-hover">
                                         <thead>
                                         <tr>
-                                            <th>Group ID</th>
-                                            <th>Group Name</th>
+                                            <th>Student id</th>
+                                            <th>Student Name</th>
                                             <th>Grade</th>
                                             <th className="text-center">Confirm&amp;Sign</th>
                                         </tr>
