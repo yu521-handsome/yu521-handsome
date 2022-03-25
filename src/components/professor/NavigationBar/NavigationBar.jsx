@@ -15,7 +15,7 @@ export default class NavigationBar extends Component {
         <div>
           <nav className="navbar navbar-dark navbar-expand-lg fixed-top" id="mainNav" style={{background: '#9f2536'}}>
                 <div className="container">
-                  <a className="navbar-brand" href="#page-top">TCPCM</a>
+                  <Link className="navbar-brand" to="/professor/home">TCPCM</Link>
                   <button data-bs-toggle="collapse" data-bs-target="#navbarResponsive" className="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i className="fa fa-bars" /></button>
                 <div className="collapse navbar-collapse" id="navbarResponsive">
                     <ul className="navbar-nav ms-auto text-uppercase">
@@ -23,7 +23,7 @@ export default class NavigationBar extends Component {
                         <div className="dropdown-menu">
                             <Link className="dropdown-item text-capitalize" to="/professor/capstoneProject/infor">Capstone Project</Link>
                             <Link className="dropdown-item text-capitalize" to="/professor/account/set">Account Setup</Link>
-                            <Link className="dropdown-item text-capitalize" to="/professor/group/set">Student Grouping</Link>
+                            <Link className="dropdown-item text-capitalize" to="/professor/group/infor">Student Grouping</Link>
                             <Link className="dropdown-item text-capitalize" to="/professor/grading/infor">Grading</Link>
                             <Link className="dropdown-item text-capitalize" to="">Course Report</Link>
                             <Link className="dropdown-item text-capitalize" to="">Badge Setting</Link>
