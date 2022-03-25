@@ -1,18 +1,58 @@
 import React, { Component } from 'react'
+import PageNav from '../PageNav/PageNav'
 
 export default class GroupInfoTable extends Component {
+    state= {
+        pageCurr:1,
+        listNumber:10,
+    }
+    //create the data showing in the table
+    createShowData() {
+        //groupInfo:[{id:"",name:"",students:[],experts:""}]
+        const {listNumber,pageCurr} = this.state
+        const {groupInfo} = this.props
+        let showingRow = []
+        for(var i=listNumber*(pageCurr-1); i < listNumber*pageCurr; i++) {
+            if(i === groupInfo.length) {
+                break
+            }
+            let index = i
+            showingRow.push(
+                <tr>
+                    <th scope="row">{index}</th>
+                    <td>{groupInfo[index].id}</td>
+                    <td>{groupInfo[index].name}</td>
+                    <td>
+                        {groupInfo[index].students.map((item,index) => {
+                            return <div key={index}>{item}</div>
+                        })}
+                    </td>
+                    <td>{groupInfo[index].expert}</td>
+                </tr>
+            )
+        }
+        return showingRow
+    }
+
+    //call back function to get the current page from PageNav
+    changeCurrent = (pageCurr) => {
+        this.setState({pageCurr})
+    }
     render() {
+        const {courseId} = this.props
+        const showingData = this.createShowData.bind(this)()
         return (
             <div>
                 <section id="group-list-1" style={{height: 'auto'}}>
                     <div id="course-1" style={{marginBottom: '5%', background: 'rgba(249,242,243,0.98)'}}>
                         <div className="row" style={{width: '70%'}}>
                         <div className="col">
-                            <h3>Course ID: AF4512BDB01</h3>
+                            <h3>Course ID: {courseId}</h3>
                         </div>
                         </div>
                     </div>
-                    <div id="group-table" style={{background: 'rgba(255,255,255,0.2)'}}><div className="form-group pull-right">
+                    <div id="group-table" style={{background: 'rgba(255,255,255,0.2)'}}>
+                        <div className="form-group pull-right">
                         <input type="text" className="search form-control" placeholder="What you looking for?" />
                         </div>
                         <span className="counter pull-right" />
@@ -25,59 +65,15 @@ export default class GroupInfoTable extends Component {
                             <th className="col-md-6 col-xs-6">Students</th>
                             <th className="col-md-3 col-xs-3">Industry Expert</th>
                             </tr>
-                            <tr className="warning no-result">
-                            <td colSpan={4}><i className="fa fa-warning" /> No result</td>
-                            </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                            <th scope="row">1</th>
-                            <td>BDB01</td>
-                            <td>UI &amp; UX</td>
-                            <td>Eger</td>
-                            <td>1</td>
-                            </tr>
-                            <tr>
-                            <th scope="row">2</th>
-                            <td>BDB02</td>
-                            <td>Graphic Designer</td>
-                            <td>Eger</td>
-                            <td>2</td>
-                            </tr>
-                            <tr>
-                            <th scope="row">3</th>
-                            <td>BDB03</td>
-                            <td>Software Developer</td>
-                            <td>Budapest</td>
-                            <td>3</td>
-                            </tr>
-                            <tr>
-                            <th scope="row">4</th>
-                            <td>BDB04</td>
-                            <td>Front-end Developer</td>
-                            <td>Luxemburg</td>
-                            <td>4</td>
-                            </tr>
+                            {showingData}
                         </tbody>
                         </table>
                         <nav aria-label="Page navigation example">
-                        <ul className="pagination">
-                            <li className="page-item">
-                            <a className="page-link" href="#" aria-label="Previous">
-                                <span aria-hidden="true">«</span>
-                                <span className="sr-only">Previous</span>
-                            </a>
-                            </li>
-                            <li className="page-item, active"><a className="page-link" href="#">1</a></li>
-                            <li className="page-item"><a className="page-link" href="#">2</a></li>
-                            <li className="page-item"><a className="page-link" href="#">3</a></li>
-                            <li className="page-item">
-                            <a className="page-link" href="#" aria-label="Next">
-                                <span aria-hidden="true">»</span>
-                                <span className="sr-only">Next</span>
-                            </a>
-                            </li>
-                        </ul>
+                            <nav>
+                                <PageNav totalPage = { Math.ceil(this.props.groupInfo.length/this.state.listNumber)} changeCurrent = {this.changeCurrent}/>
+                            </nav>
                         </nav>
                     </div>
                 </section>
