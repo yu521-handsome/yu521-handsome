@@ -8,6 +8,9 @@ export default class CreateQuiz extends Component {
     courseID:"",
     description:"",
     courseInfor:[],
+    isValid:false,
+    noticeHeader:"",
+    quizId:"",
     userEmail:"p1@gmail.com"
   }
 
@@ -27,6 +30,9 @@ export default class CreateQuiz extends Component {
       if(response !== "error") {
         this.setState({courseInfor:response})
       }
+      else {
+        alert("Course get failed.")
+      }
     }).catch((e)=>{
       console.log("error")
     })
@@ -43,8 +49,15 @@ export default class CreateQuiz extends Component {
     this.setState({description:event.target.value})
   }
 
-  handleSubmit = (event)=> {
+  handleSubmit = async (event)=> {
     event.preventDefault()
+    let isValid = this.errordectection()
+    let noticeHeader=""
+    if(!isValid) {
+      noticeHeader = "Please input all the information"
+      this.setState({isValid:isValid,noticeHeader:noticeHeader})
+      return
+    }
     const {title,courseID,description} = this.state
     const HEADER = {
       'Accept':'application/json,text/plain,*/*',
@@ -55,19 +68,55 @@ export default class CreateQuiz extends Component {
       title:title,
       description:description
     }
-    fetch('/api1/quizzes',{
+    await fetch('/api1/quizzes',{
       method:'post',
       headers:HEADER,
       body:JSON.stringify(BODY)
     }).then((res)=>{
       return res.json()
     }).then((data)=>{
-      console.log(data)
-    }).catch(function(error){
-      console.log(error)
+      this.dataProcess(data)
+    }).catch((error)=>{
+      this.errorHandale(error)
     })
   }
+
+  errordectection(){
+    const {title,courseID,description} = this.state
+    if(title==="" || courseID==="" || description==="") {
+      return false
+    }
+    return true
+  }
+
+  dataProcess(data) {
+    let noticeHeader=""
+    if(data.status < 200 || data.status > 300) {
+      noticeHeader = data.message
+      this.setState({isValid:false,noticeHeader:noticeHeader})
+    }
+    else {
+      this.setState({quizId:data.id,isValid:true})
+    }
+  }
+
+  errorHandale(error) {
+    let noticeHeader = "Quiz set failed.Unexpected error occurs"
+    this.setState({isValid:false,noticeHeader:noticeHeader})
+    console.log(error)
+  }
   render() {
+    const {quizId,isValid,noticeHeader} = this.state
+    let noticeInfo = {
+      header:noticeHeader,
+      body:<div></div>
+    }
+    if(isValid) {
+      noticeInfo = {
+        header:"Successful setup a new quiz",
+        body:<div><p>Your Quiz ID is {quizId}.<br/></p><p>Click the COURSE OUTLINE to go back to course outline check the new quiz information.<br /></p></div>
+      }
+    }
     return (
       <div>
         <NavigationBar/>
@@ -88,8 +137,8 @@ export default class CreateQuiz extends Component {
             <div id="report-description-1" className="mb-3"><small className="form-text">Quiz Description</small>
             <textarea className="form-control form-control-sm" defaultValue={""} onChange={this.saveDescription}/></div>
             <div className="mb-3">
-              <button className="btn btn-secondary" href="#modal-2" style={{background: 'var(--bs-primary)'}} data-bs-target="#modal-2" data-bs-toggle="modal" type='submit'>SETUP</button>
-              <Notice/>
+              <button className="btn btn-secondary" style={{background: 'var(--bs-primary)'}} data-bs-target="#modal-2" data-bs-toggle="modal" type='submit'>SETUP</button>
+              <Notice noticeInfo = {noticeInfo}/>
             </div>
           </form>
         </section>
