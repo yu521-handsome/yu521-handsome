@@ -25,7 +25,7 @@ export default class GradingTable extends Component {
             //not be graded
             if(courseRecord[i].grade === "") {
                 showingRow.push(
-                    <tr>
+                    <tr key={index}>
                         <td className="text-truncate" style={{maxWidth: 200}}>{courseRecord[index].student.studentId}</td>
                         <td className="text-truncate" style={{maxWidth: 200}}>{courseRecord[index].student.name}</td>
                         <td>
@@ -48,7 +48,7 @@ export default class GradingTable extends Component {
             //has been graded
             else{
                 showingRow.push(
-                    <tr>
+                    <tr key={index}>
                         <td className="text-truncate" style={{maxWidth: 200}}>{courseRecord[index].student.studentId}</td>
                         <td className="text-truncate" style={{maxWidth: 200}}>{courseRecord[index].student.name}</td>
                         <td>
@@ -98,9 +98,7 @@ export default class GradingTable extends Component {
             'Accept':'application/json,text/plain,*/*',
             'Content-Type':'application/json'
         }
-        const BODY = {
-            gradedRecords:submitData
-        }
+        const BODY = submitData
           fetch(`/api1/course-records?courseId=${this.props.courseId}`,{
             method:'PATCH',
             headers:HEADER,
@@ -150,7 +148,7 @@ export default class GradingTable extends Component {
                                 </div>
                                 <div className="card-footer">
                                     <nav>
-                                        <PageNav totalPage = { Math.ceil(this.state.courseRecord.length/this.state.listNumber)} changeCurrent = {this.changeCurrent}/>
+                                        <PageNav totalPage = { Math.ceil(this.props.courseRecord.length/this.state.listNumber)} changeCurrent = {this.changeCurrent}/>
                                     </nav>
                                 </div>
                                 <button className="btn btn-primary" style={{marginLeft: 'auto', /*marginRight: 1000, */width: '211.438px'}} href="#modal-1" data-bs-target="#modal-1" data-bs-toggle="modal" onClick={this.handleSubmit}>CONFIRM AND SIGN</button>

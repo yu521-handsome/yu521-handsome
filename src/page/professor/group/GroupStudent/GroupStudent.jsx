@@ -47,7 +47,7 @@ export default class GroupStudent extends Component {
       const courseInfor = this.state.courseInfor
       for(var i=0; i < courseInfor.length; i++) {
         if(courseInfor[i].id === choosedId) {
-          expertsList = courseInfor[i].experts.map(item => item.email)
+          expertsList = courseInfor[i].experts.map(item => item)
         }
       }
       this.setState({expertsList:expertsList})
@@ -150,7 +150,7 @@ export default class GroupStudent extends Component {
                 <select className="form-select" onChange={this.handleExpert} defaultValue="">
                     <option key={-1} value="">Choose an Expert</option>
                     {this.state.expertsList.map((item,index) => {
-                      return(<option key={index} value={item}>{item}</option>)
+                      return(<option key={index} value={item.email}>{item.name}</option>)
                     })}
                 </select>
               </div>
