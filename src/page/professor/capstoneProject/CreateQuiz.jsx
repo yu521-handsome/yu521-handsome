@@ -77,7 +77,7 @@ export default class CreateQuiz extends Component {
     }).then((data)=>{
       this.dataProcess(data)
     }).catch((error)=>{
-      this.errorHandale(error)
+      this.errorHandle(error)
     })
   }
 
@@ -100,7 +100,7 @@ export default class CreateQuiz extends Component {
     }
   }
 
-  errorHandale(error) {
+  errorHandle(error) {
     let noticeHeader = "Quiz set failed.Unexpected error occurs"
     this.setState({isValid:false,noticeHeader:noticeHeader})
     console.log(error)
